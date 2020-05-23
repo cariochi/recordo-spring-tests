@@ -1,0 +1,6 @@
+feign:
+  client:
+    config:
+      GitHub:
+        requestInterceptors:
+          - com.cariochi.recordo.GitHubInterceptor

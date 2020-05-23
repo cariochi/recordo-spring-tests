@@ -1,0 +1,126 @@
+[ {
+  "request" : {
+    "method" : "GET",
+    "url" : "https://api.github.com/gists",
+    "headers" : {
+      "Authorization" : "********",
+      "Accept" : "*/*"
+    },
+    "body" : null
+  },
+  "response" : {
+    "protocol" : "HTTP/1.1",
+    "statusCode" : 200,
+    "statusText" : "OK",
+    "headers" : {
+      "Content-Type" : "application/json; charset=utf-8"
+    },
+    "body" : [ {
+      "url" : "https://api.github.com/gists/500e238caaf9c6c5bd2edd6f09d81adb",
+      "forks_url" : "https://api.github.com/gists/500e238caaf9c6c5bd2edd6f09d81adb/forks",
+      "commits_url" : "https://api.github.com/gists/500e238caaf9c6c5bd2edd6f09d81adb/commits",
+      "id" : "500e238caaf9c6c5bd2edd6f09d81adb",
+      "node_id" : "MDQ6R2lzdDUwMGUyMzhjYWFmOWM2YzViZDJlZGQ2ZjA5ZDgxYWRi",
+      "git_pull_url" : "https://gist.github.com/500e238caaf9c6c5bd2edd6f09d81adb.git",
+      "git_push_url" : "https://gist.github.com/500e238caaf9c6c5bd2edd6f09d81adb.git",
+      "html_url" : "https://gist.github.com/500e238caaf9c6c5bd2edd6f09d81adb",
+      "files" : {
+        "3cNd4L1sCi" : {
+          "filename" : "3cNd4L1sCi",
+          "type" : "text/plain",
+          "language" : null,
+          "raw_url" : "https://gist.githubusercontent.com/vadimdeineka/500e238caaf9c6c5bd2edd6f09d81adb/raw/2dbe72df66b2ada4270e80bfd3cf6be5fbcc86f7/3cNd4L1sCi",
+          "size" : 10
+        },
+        "IivRTayBqS" : {
+          "filename" : "IivRTayBqS",
+          "type" : "text/plain",
+          "language" : null,
+          "raw_url" : "https://gist.githubusercontent.com/vadimdeineka/500e238caaf9c6c5bd2edd6f09d81adb/raw/2382d2e9db6edff78499791023adaaf273d77d6e/IivRTayBqS",
+          "size" : 10
+        }
+      },
+      "public" : false,
+      "created_at" : "2020-05-23T13:17:53Z",
+      "updated_at" : "2020-05-23T13:17:53Z",
+      "description" : "uc1fISQoyB",
+      "comments" : 0,
+      "user" : null,
+      "comments_url" : "https://api.github.com/gists/500e238caaf9c6c5bd2edd6f09d81adb/comments",
+      "owner" : {
+        "login" : "vadimdeineka",
+        "id" : 9740075,
+        "node_id" : "MDQ6VXNlcjk3NDAwNzU=",
+        "avatar_url" : "https://avatars3.githubusercontent.com/u/9740075?v=4",
+        "gravatar_id" : "",
+        "url" : "https://api.github.com/users/vadimdeineka",
+        "html_url" : "https://github.com/vadimdeineka",
+        "followers_url" : "https://api.github.com/users/vadimdeineka/followers",
+        "following_url" : "https://api.github.com/users/vadimdeineka/following{/other_user}",
+        "gists_url" : "https://api.github.com/users/vadimdeineka/gists{/gist_id}",
+        "starred_url" : "https://api.github.com/users/vadimdeineka/starred{/owner}{/repo}",
+        "subscriptions_url" : "https://api.github.com/users/vadimdeineka/subscriptions",
+        "organizations_url" : "https://api.github.com/users/vadimdeineka/orgs",
+        "repos_url" : "https://api.github.com/users/vadimdeineka/repos",
+        "events_url" : "https://api.github.com/users/vadimdeineka/events{/privacy}",
+        "received_events_url" : "https://api.github.com/users/vadimdeineka/received_events",
+        "type" : "User",
+        "site_admin" : false
+      },
+      "truncated" : false
+    }, {
+      "url" : "https://api.github.com/gists/461bfefb36ea19bb7e528a5bb9f6c76c",
+      "forks_url" : "https://api.github.com/gists/461bfefb36ea19bb7e528a5bb9f6c76c/forks",
+      "commits_url" : "https://api.github.com/gists/461bfefb36ea19bb7e528a5bb9f6c76c/commits",
+      "id" : "461bfefb36ea19bb7e528a5bb9f6c76c",
+      "node_id" : "MDQ6R2lzdDQ2MWJmZWZiMzZlYTE5YmI3ZTUyOGE1YmI5ZjZjNzZj",
+      "git_pull_url" : "https://gist.github.com/461bfefb36ea19bb7e528a5bb9f6c76c.git",
+      "git_push_url" : "https://gist.github.com/461bfefb36ea19bb7e528a5bb9f6c76c.git",
+      "html_url" : "https://gist.github.com/461bfefb36ea19bb7e528a5bb9f6c76c",
+      "files" : {
+        "3cNd4L1sCi" : {
+          "filename" : "3cNd4L1sCi",
+          "type" : "text/plain",
+          "language" : null,
+          "raw_url" : "https://gist.githubusercontent.com/vadimdeineka/461bfefb36ea19bb7e528a5bb9f6c76c/raw/2dbe72df66b2ada4270e80bfd3cf6be5fbcc86f7/3cNd4L1sCi",
+          "size" : 10
+        },
+        "IivRTayBqS" : {
+          "filename" : "IivRTayBqS",
+          "type" : "text/plain",
+          "language" : null,
+          "raw_url" : "https://gist.githubusercontent.com/vadimdeineka/461bfefb36ea19bb7e528a5bb9f6c76c/raw/2382d2e9db6edff78499791023adaaf273d77d6e/IivRTayBqS",
+          "size" : 10
+        }
+      },
+      "public" : false,
+      "created_at" : "2020-05-23T13:16:56Z",
+      "updated_at" : "2020-05-23T13:16:56Z",
+      "description" : "uc1fISQoyB",
+      "comments" : 0,
+      "user" : null,
+      "comments_url" : "https://api.github.com/gists/461bfefb36ea19bb7e528a5bb9f6c76c/comments",
+      "owner" : {
+        "login" : "vadimdeineka",
+        "id" : 9740075,
+        "node_id" : "MDQ6VXNlcjk3NDAwNzU=",
+        "avatar_url" : "https://avatars3.githubusercontent.com/u/9740075?v=4",
+        "gravatar_id" : "",
+        "url" : "https://api.github.com/users/vadimdeineka",
+        "html_url" : "https://github.com/vadimdeineka",
+        "followers_url" : "https://api.github.com/users/vadimdeineka/followers",
+        "following_url" : "https://api.github.com/users/vadimdeineka/following{/other_user}",
+        "gists_url" : "https://api.github.com/users/vadimdeineka/gists{/gist_id}",
+        "starred_url" : "https://api.github.com/users/vadimdeineka/starred{/owner}{/repo}",
+        "subscriptions_url" : "https://api.github.com/users/vadimdeineka/subscriptions",
+        "organizations_url" : "https://api.github.com/users/vadimdeineka/orgs",
+        "repos_url" : "https://api.github.com/users/vadimdeineka/repos",
+        "events_url" : "https://api.github.com/users/vadimdeineka/events{/privacy}",
+        "received_events_url" : "https://api.github.com/users/vadimdeineka/received_events",
+        "type" : "User",
+        "site_admin" : false
+      },
+      "truncated" : false
+    } ]
+  }
+} ]
