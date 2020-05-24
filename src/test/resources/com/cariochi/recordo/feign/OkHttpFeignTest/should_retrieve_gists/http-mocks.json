@@ -1,131 +1,66 @@
-[
-  {
-    "request": {
-      "method": "GET",
-      "url": "https://api.github.com/gists",
-      "headers": {
-        "authorization": "********",
-        "accept": "*/*"
-      },
-      "body": null
+[ {
+  "request" : {
+    "method" : "GET",
+    "url" : "https://api.github.com/gists",
+    "headers" : {
+      "authorization" : "********",
+      "accept" : "*/*"
     },
-    "response": {
-      "protocol": "http/1.1",
-      "statusCode": 200,
-      "statusText": "OK",
-      "headers": {
-        "content-type": "application/json; charset=utf-8"
-      },
-      "body": [
-        {
-          "url": "https://api.github.com/gists/500e238caaf9c6c5bd2edd6f09d81adb",
-          "forks_url": "https://api.github.com/gists/500e238caaf9c6c5bd2edd6f09d81adb/forks",
-          "commits_url": "https://api.github.com/gists/500e238caaf9c6c5bd2edd6f09d81adb/commits",
-          "id": "500e238caaf9c6c5bd2edd6f09d81adb",
-          "node_id": "MDQ6R2lzdDUwMGUyMzhjYWFmOWM2YzViZDJlZGQ2ZjA5ZDgxYWRi",
-          "git_pull_url": "https://gist.github.com/500e238caaf9c6c5bd2edd6f09d81adb.git",
-          "git_push_url": "https://gist.github.com/500e238caaf9c6c5bd2edd6f09d81adb.git",
-          "html_url": "https://gist.github.com/500e238caaf9c6c5bd2edd6f09d81adb",
-          "files": {
-            "3cNd4L1sCi": {
-              "filename": "3cNd4L1sCi",
-              "type": "text/plain",
-              "language": null,
-              "raw_url": "https://gist.githubusercontent.com/vadimdeineka/500e238caaf9c6c5bd2edd6f09d81adb/raw/2dbe72df66b2ada4270e80bfd3cf6be5fbcc86f7/3cNd4L1sCi",
-              "size": 10
-            },
-            "IivRTayBqS": {
-              "filename": "IivRTayBqS",
-              "type": "text/plain",
-              "language": null,
-              "raw_url": "https://gist.githubusercontent.com/vadimdeineka/500e238caaf9c6c5bd2edd6f09d81adb/raw/2382d2e9db6edff78499791023adaaf273d77d6e/IivRTayBqS",
-              "size": 10
-            }
-          },
-          "public": false,
-          "created_at": "2020-05-23T13:17:53Z",
-          "updated_at": "2020-05-23T13:17:53Z",
-          "description": "uc1fISQoyB",
-          "comments": 0,
-          "user": null,
-          "comments_url": "https://api.github.com/gists/500e238caaf9c6c5bd2edd6f09d81adb/comments",
-          "owner": {
-            "login": "vadimdeineka",
-            "id": 9740075,
-            "node_id": "MDQ6VXNlcjk3NDAwNzU=",
-            "avatar_url": "https://avatars3.githubusercontent.com/u/9740075?v=4",
-            "gravatar_id": "",
-            "url": "https://api.github.com/users/vadimdeineka",
-            "html_url": "https://github.com/vadimdeineka",
-            "followers_url": "https://api.github.com/users/vadimdeineka/followers",
-            "following_url": "https://api.github.com/users/vadimdeineka/following{/other_user}",
-            "gists_url": "https://api.github.com/users/vadimdeineka/gists{/gist_id}",
-            "starred_url": "https://api.github.com/users/vadimdeineka/starred{/owner}{/repo}",
-            "subscriptions_url": "https://api.github.com/users/vadimdeineka/subscriptions",
-            "organizations_url": "https://api.github.com/users/vadimdeineka/orgs",
-            "repos_url": "https://api.github.com/users/vadimdeineka/repos",
-            "events_url": "https://api.github.com/users/vadimdeineka/events{/privacy}",
-            "received_events_url": "https://api.github.com/users/vadimdeineka/received_events",
-            "type": "User",
-            "site_admin": false
-          },
-          "truncated": false
-        },
-        {
-          "url": "https://api.github.com/gists/461bfefb36ea19bb7e528a5bb9f6c76c",
-          "forks_url": "https://api.github.com/gists/461bfefb36ea19bb7e528a5bb9f6c76c/forks",
-          "commits_url": "https://api.github.com/gists/461bfefb36ea19bb7e528a5bb9f6c76c/commits",
-          "id": "461bfefb36ea19bb7e528a5bb9f6c76c",
-          "node_id": "MDQ6R2lzdDQ2MWJmZWZiMzZlYTE5YmI3ZTUyOGE1YmI5ZjZjNzZj",
-          "git_pull_url": "https://gist.github.com/461bfefb36ea19bb7e528a5bb9f6c76c.git",
-          "git_push_url": "https://gist.github.com/461bfefb36ea19bb7e528a5bb9f6c76c.git",
-          "html_url": "https://gist.github.com/461bfefb36ea19bb7e528a5bb9f6c76c",
-          "files": {
-            "3cNd4L1sCi": {
-              "filename": "3cNd4L1sCi",
-              "type": "text/plain",
-              "language": null,
-              "raw_url": "https://gist.githubusercontent.com/vadimdeineka/461bfefb36ea19bb7e528a5bb9f6c76c/raw/2dbe72df66b2ada4270e80bfd3cf6be5fbcc86f7/3cNd4L1sCi",
-              "size": 10
-            },
-            "IivRTayBqS": {
-              "filename": "IivRTayBqS",
-              "type": "text/plain",
-              "language": null,
-              "raw_url": "https://gist.githubusercontent.com/vadimdeineka/461bfefb36ea19bb7e528a5bb9f6c76c/raw/2382d2e9db6edff78499791023adaaf273d77d6e/IivRTayBqS",
-              "size": 10
-            }
-          },
-          "public": false,
-          "created_at": "2020-05-23T13:16:56Z",
-          "updated_at": "2020-05-23T13:16:56Z",
-          "description": "uc1fISQoyB",
-          "comments": 0,
-          "user": null,
-          "comments_url": "https://api.github.com/gists/461bfefb36ea19bb7e528a5bb9f6c76c/comments",
-          "owner": {
-            "login": "vadimdeineka",
-            "id": 9740075,
-            "node_id": "MDQ6VXNlcjk3NDAwNzU=",
-            "avatar_url": "https://avatars3.githubusercontent.com/u/9740075?v=4",
-            "gravatar_id": "",
-            "url": "https://api.github.com/users/vadimdeineka",
-            "html_url": "https://github.com/vadimdeineka",
-            "followers_url": "https://api.github.com/users/vadimdeineka/followers",
-            "following_url": "https://api.github.com/users/vadimdeineka/following{/other_user}",
-            "gists_url": "https://api.github.com/users/vadimdeineka/gists{/gist_id}",
-            "starred_url": "https://api.github.com/users/vadimdeineka/starred{/owner}{/repo}",
-            "subscriptions_url": "https://api.github.com/users/vadimdeineka/subscriptions",
-            "organizations_url": "https://api.github.com/users/vadimdeineka/orgs",
-            "repos_url": "https://api.github.com/users/vadimdeineka/repos",
-            "events_url": "https://api.github.com/users/vadimdeineka/events{/privacy}",
-            "received_events_url": "https://api.github.com/users/vadimdeineka/received_events",
-            "type": "User",
-            "site_admin": false
-          },
-          "truncated": false
+    "body" : null
+  },
+  "response" : {
+    "protocol" : "http/1.1",
+    "statusCode" : 200,
+    "statusText" : "OK",
+    "headers" : {
+      "content-type" : "application/json; charset=utf-8"
+    },
+    "body" : [ {
+      "url" : "https://api.github.com/gists/b78b85cf2d27bc9ff2744f2f343c950a",
+      "forks_url" : "https://api.github.com/gists/b78b85cf2d27bc9ff2744f2f343c950a/forks",
+      "commits_url" : "https://api.github.com/gists/b78b85cf2d27bc9ff2744f2f343c950a/commits",
+      "id" : "b78b85cf2d27bc9ff2744f2f343c950a",
+      "node_id" : "MDQ6R2lzdGI3OGI4NWNmMmQyN2JjOWZmMjc0NGYyZjM0M2M5NTBh",
+      "git_pull_url" : "https://gist.github.com/b78b85cf2d27bc9ff2744f2f343c950a.git",
+      "git_push_url" : "https://gist.github.com/b78b85cf2d27bc9ff2744f2f343c950a.git",
+      "html_url" : "https://gist.github.com/b78b85cf2d27bc9ff2744f2f343c950a",
+      "files" : {
+        "hello_world.rb" : {
+          "filename" : "hello_world.rb",
+          "type" : "application/x-ruby",
+          "language" : "Ruby",
+          "raw_url" : "https://gist.githubusercontent.com/vadimdeineka/b78b85cf2d27bc9ff2744f2f343c950a/raw/95d09f2b10159347eece71399a7e2e907ea3df4f/hello_world.rb",
+          "size" : 11
         }
-      ]
-    }
+      },
+      "public" : true,
+      "created_at" : "2020-05-23T16:20:15Z",
+      "updated_at" : "2020-05-23T16:20:15Z",
+      "description" : "Hello World Example",
+      "comments" : 0,
+      "user" : null,
+      "comments_url" : "https://api.github.com/gists/b78b85cf2d27bc9ff2744f2f343c950a/comments",
+      "owner" : {
+        "login" : "vadimdeineka",
+        "id" : 9740075,
+        "node_id" : "MDQ6VXNlcjk3NDAwNzU=",
+        "avatar_url" : "https://avatars3.githubusercontent.com/u/9740075?v=4",
+        "gravatar_id" : "",
+        "url" : "https://api.github.com/users/vadimdeineka",
+        "html_url" : "https://github.com/vadimdeineka",
+        "followers_url" : "https://api.github.com/users/vadimdeineka/followers",
+        "following_url" : "https://api.github.com/users/vadimdeineka/following{/other_user}",
+        "gists_url" : "https://api.github.com/users/vadimdeineka/gists{/gist_id}",
+        "starred_url" : "https://api.github.com/users/vadimdeineka/starred{/owner}{/repo}",
+        "subscriptions_url" : "https://api.github.com/users/vadimdeineka/subscriptions",
+        "organizations_url" : "https://api.github.com/users/vadimdeineka/orgs",
+        "repos_url" : "https://api.github.com/users/vadimdeineka/repos",
+        "events_url" : "https://api.github.com/users/vadimdeineka/events{/privacy}",
+        "received_events_url" : "https://api.github.com/users/vadimdeineka/received_events",
+        "type" : "User",
+        "site_admin" : false
+      },
+      "truncated" : false
+    } ]
   }
-]
+} ]

@@ -1,7 +1,7 @@
 package com.cariochi.recordo.feign;
 
-import com.cariochi.recordo.annotation.EnableHttpMocks;
 import com.cariochi.recordo.RecordoTestsApplication;
+import com.cariochi.recordo.annotation.EnableHttpMocks;
 import feign.Client;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.OkHttpClient;
@@ -28,8 +28,7 @@ class OkHttpFeignTest extends FeignTest {
 
         @Bean
         public OkHttpClient client() {
-            return new OkHttpClient.Builder()
-                    .build();
+            return new OkHttpClient();
         }
 
         @Bean

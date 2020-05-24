@@ -2,14 +2,18 @@ package com.cariochi.recordo;
 
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
+@Component
 public class GitHubInterceptor implements RequestInterceptor {
 
-    public static final String KEY = "4e5986483be7bb55cd7d00d24fb45bd7e4ac3054";
+    @Value("${github.key}")
+    public String key;
 
     @Override
     public void apply(RequestTemplate requestTemplate) {
         requestTemplate
-                .header("Authorization", "token " + KEY);
+                .header("Authorization", "Bearer" + key);
     }
 }

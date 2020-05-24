@@ -1,19 +1,21 @@
 package com.cariochi.recordo.resttemplate;
 
-import com.cariochi.recordo.*;
+import com.cariochi.recordo.Gist;
+import com.cariochi.recordo.GitHubResponse;
 import com.cariochi.recordo.annotation.Given;
 import com.cariochi.recordo.annotation.HttpMock;
 import com.cariochi.recordo.annotation.Verify;
 import com.cariochi.recordo.junit5.RecordoExtension;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.web.client.RestTemplate;
 
 import java.net.URI;
 import java.util.List;
 
-import static com.cariochi.recordo.GitHubInterceptor.KEY;
 import static org.springframework.http.RequestEntity.*;
 
 @ExtendWith(RecordoExtension.class)
@@ -22,41 +24,45 @@ public abstract class RestTemplateTest {
     private Gist gist;
     private List<GitHubResponse> responses;
 
-    protected abstract RestTemplate getRestTemplate();
+    @Value("${github.key}")
+    public String key;
+
+    @Autowired
+    private RestTemplate restTemplate;
 
     @Test
     @Verify("responses")
     @HttpMock
     void should_retrieve_gists() {
-        responses = getRestTemplate().exchange(
+        responses = restTemplate.exchange(
                 get(URI.create("https://api.github.com/gists"))
-                        .header("Authorization", "token " + KEY)
+                        .header("Authorization", "Bearer" + key)
                         .build(),
                 new ParameterizedTypeReference<List<GitHubResponse>>() {}
         ).getBody();
     }
 
     @Test
-    @Given("gist")
+    @Given(value = "gist", file = "gist.json")
     @HttpMock
     void should_create_gist() {
-        GitHubResponse response = getRestTemplate().exchange(
+        GitHubResponse response = restTemplate.exchange(
                 post(URI.create("https://api.github.com/gists"))
-                        .header("Authorization", "token " + KEY)
+                        .header("Authorization", "Bearer" + key)
                         .body(gist),
                 GitHubResponse.class
         ).getBody();
 
-        gist = getRestTemplate().exchange(
+        gist = restTemplate.exchange(
                 get(URI.create("https://api.github.com/gists/" + response.getId()))
-                        .header("Authorization", "token " + KEY)
+                        .header("Authorization", "Bearer" + key)
                         .build(),
                 Gist.class
         ).getBody();
 
-        getRestTemplate().exchange(
+        restTemplate.exchange(
                 delete(URI.create("https://api.github.com/gists/" + response.getId()))
-                        .header("Authorization", "token " + KEY)
+                        .header("Authorization", "Bearer" + key)
                         .build(),
                 Void.class
         );

@@ -4,3 +4,5 @@ feign:
       GitHub:
         requestInterceptors:
           - com.cariochi.recordo.GitHubInterceptor
+
+github.key: KEY
