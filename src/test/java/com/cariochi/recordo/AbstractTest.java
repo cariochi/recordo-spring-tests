@@ -29,7 +29,7 @@ public abstract class AbstractTest {
     }
 
     @Test
-    @Given(value = "gist", file = "gist.json")
+    @Given(value = "gist", file = "/gist.json")
     @HttpMock
     void should_create_gist() {
         GistResponse response = gitHub.createGist(gist);
