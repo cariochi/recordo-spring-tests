@@ -1,5 +1,7 @@
 package com.cariochi.recordo.resttemplate;
 
+import com.cariochi.recordo.AbstractTest;
+import com.cariochi.recordo.GitHub;
 import com.cariochi.recordo.RecordoTestsApplication;
 import com.cariochi.recordo.annotation.EnableHttpMocks;
 import org.apache.http.client.HttpClient;
@@ -15,16 +17,16 @@ import org.springframework.web.client.RestTemplate;
 
 @SpringBootTest(
         classes = {RecordoTestsApplication.class, ApacheRestTemplateTest.Config.class},
-        properties = "rest-template.httpclient.enabled=true"
+        properties = "resttemplate.httpclient.enabled=true"
 )
-public class ApacheRestTemplateTest extends RestTemplateTest {
+public class ApacheRestTemplateTest extends AbstractTest {
 
     @Autowired
     @EnableHttpMocks
     private HttpClient httpClient;
 
     @Configuration
-    @ConditionalOnProperty("rest-template.httpclient.enabled")
+    @ConditionalOnProperty("resttemplate.httpclient.enabled")
     public static class Config {
 
         @Bean
@@ -35,6 +37,11 @@ public class ApacheRestTemplateTest extends RestTemplateTest {
         @Bean
         public RestTemplate restTemplate() {
             return new RestTemplate(new HttpComponentsClientHttpRequestFactory(httpClient()));
+        }
+
+        @Bean
+        public GitHub gitHub() {
+            return new GitHubRestTemplate(restTemplate());
         }
 
     }

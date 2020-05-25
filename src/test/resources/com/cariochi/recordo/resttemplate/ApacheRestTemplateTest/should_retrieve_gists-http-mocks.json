@@ -3,43 +3,43 @@
     "method" : "GET",
     "url" : "https://api.github.com/gists",
     "headers" : {
-      "authorization" : "********",
-      "accept" : "application/json, application/*+json"
+      "Authorization" : "********",
+      "Accept" : "application/json, application/*+json"
     },
     "body" : null
   },
   "response" : {
-    "protocol" : "http/1.1",
+    "protocol" : "HTTP/1.1",
     "statusCode" : 200,
     "statusText" : "OK",
     "headers" : {
-      "content-type" : "application/json; charset=utf-8"
+      "Content-Type" : "application/json; charset=utf-8"
     },
     "body" : [ {
-      "url" : "https://api.github.com/gists/b78b85cf2d27bc9ff2744f2f343c950a",
-      "forks_url" : "https://api.github.com/gists/b78b85cf2d27bc9ff2744f2f343c950a/forks",
-      "commits_url" : "https://api.github.com/gists/b78b85cf2d27bc9ff2744f2f343c950a/commits",
-      "id" : "b78b85cf2d27bc9ff2744f2f343c950a",
-      "node_id" : "MDQ6R2lzdGI3OGI4NWNmMmQyN2JjOWZmMjc0NGYyZjM0M2M5NTBh",
-      "git_pull_url" : "https://gist.github.com/b78b85cf2d27bc9ff2744f2f343c950a.git",
-      "git_push_url" : "https://gist.github.com/b78b85cf2d27bc9ff2744f2f343c950a.git",
-      "html_url" : "https://gist.github.com/b78b85cf2d27bc9ff2744f2f343c950a",
+      "url" : "https://api.github.com/gists/dc327c67abe84c94ff7c47e1814b34bc",
+      "forks_url" : "https://api.github.com/gists/dc327c67abe84c94ff7c47e1814b34bc/forks",
+      "commits_url" : "https://api.github.com/gists/dc327c67abe84c94ff7c47e1814b34bc/commits",
+      "id" : "dc327c67abe84c94ff7c47e1814b34bc",
+      "node_id" : "MDQ6R2lzdGRjMzI3YzY3YWJlODRjOTRmZjdjNDdlMTgxNGIzNGJj",
+      "git_pull_url" : "https://gist.github.com/dc327c67abe84c94ff7c47e1814b34bc.git",
+      "git_push_url" : "https://gist.github.com/dc327c67abe84c94ff7c47e1814b34bc.git",
+      "html_url" : "https://gist.github.com/dc327c67abe84c94ff7c47e1814b34bc",
       "files" : {
-        "hello_world.rb" : {
-          "filename" : "hello_world.rb",
-          "type" : "application/x-ruby",
-          "language" : "Ruby",
-          "raw_url" : "https://gist.githubusercontent.com/vadimdeineka/b78b85cf2d27bc9ff2744f2f343c950a/raw/95d09f2b10159347eece71399a7e2e907ea3df4f/hello_world.rb",
-          "size" : 11
+        "hello_world.txt" : {
+          "filename" : "hello_world.txt",
+          "type" : "text/plain",
+          "language" : "Text",
+          "raw_url" : "https://gist.githubusercontent.com/vadimdeineka/dc327c67abe84c94ff7c47e1814b34bc/raw/d66c8d4d32962340839b015b7849e067d0f79479/hello_world.txt",
+          "size" : 14
         }
       },
       "public" : true,
-      "created_at" : "2020-05-23T16:20:15Z",
-      "updated_at" : "2020-05-23T16:20:15Z",
-      "description" : "Hello World Example",
+      "created_at" : "2020-05-25T09:01:30Z",
+      "updated_at" : "2020-05-25T09:01:30Z",
+      "description" : "Hello World!",
       "comments" : 0,
       "user" : null,
-      "comments_url" : "https://api.github.com/gists/b78b85cf2d27bc9ff2744f2f343c950a/comments",
+      "comments_url" : "https://api.github.com/gists/dc327c67abe84c94ff7c47e1814b34bc/comments",
       "owner" : {
         "login" : "vadimdeineka",
         "id" : 9740075,

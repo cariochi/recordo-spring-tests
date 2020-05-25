@@ -1,11 +1,8 @@
 {
-  "description" : "AhBbLNcd12",
+  "description" : "Hello World!",
   "files" : {
-    "U9YSNt89wr" : {
-      "content" : "lEsqZ1sHmx"
-    },
-    "EQ96b_kqWK" : {
-      "content" : "DtNr_ljrZK"
+    "hello_world.txt" : {
+      "content" : "Hello \nWorld\n!"
     }
   }
 }

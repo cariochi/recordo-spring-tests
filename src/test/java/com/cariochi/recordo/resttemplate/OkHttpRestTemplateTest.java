@@ -1,5 +1,7 @@
 package com.cariochi.recordo.resttemplate;
 
+import com.cariochi.recordo.AbstractTest;
+import com.cariochi.recordo.GitHub;
 import com.cariochi.recordo.RecordoTestsApplication;
 import com.cariochi.recordo.annotation.EnableHttpMocks;
 import okhttp3.OkHttpClient;
@@ -13,16 +15,16 @@ import org.springframework.web.client.RestTemplate;
 
 @SpringBootTest(
         classes = {RecordoTestsApplication.class, OkHttpRestTemplateTest.Config.class},
-        properties = "rest-template.okhttp.enabled=true"
+        properties = "resttemplate.okhttp.enabled=true"
 )
-public class OkHttpRestTemplateTest extends RestTemplateTest {
+public class OkHttpRestTemplateTest extends AbstractTest {
 
     @Autowired
     @EnableHttpMocks
     private OkHttpClient client;
 
     @Configuration
-    @ConditionalOnProperty("rest-template.okhttp.enabled")
+    @ConditionalOnProperty("resttemplate.okhttp.enabled")
     public static class Config {
 
         @Bean
@@ -33,6 +35,11 @@ public class OkHttpRestTemplateTest extends RestTemplateTest {
         @Bean
         public RestTemplate restTemplate() {
             return new RestTemplate(new OkHttp3ClientHttpRequestFactory(client()));
+        }
+
+        @Bean
+        public GitHub gitHub() {
+            return new GitHubRestTemplate(restTemplate());
         }
     }
 

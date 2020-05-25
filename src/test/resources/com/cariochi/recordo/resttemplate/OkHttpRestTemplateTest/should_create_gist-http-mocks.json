@@ -8,13 +8,10 @@
       "accept" : "application/json, application/*+json"
     },
     "body" : {
-      "description" : "AhBbLNcd12",
+      "description" : "Hello World!",
       "files" : {
-        "U9YSNt89wr" : {
-          "content" : "lEsqZ1sHmx"
-        },
-        "EQ96b_kqWK" : {
-          "content" : "DtNr_ljrZK"
+        "hello_world.txt" : {
+          "content" : "Hello \nWorld\n!"
         }
       }
     }
@@ -25,44 +22,35 @@
     "statusText" : "Created",
     "headers" : {
       "content-type" : "application/json; charset=utf-8",
-      "location" : "https://api.github.com/gists/200e6768559e4ecd7650d72e3b83fb14"
+      "location" : "https://api.github.com/gists/a21cbe4a86345ca5e70bcfe98f883463"
     },
     "body" : {
-      "url" : "https://api.github.com/gists/200e6768559e4ecd7650d72e3b83fb14",
-      "forks_url" : "https://api.github.com/gists/200e6768559e4ecd7650d72e3b83fb14/forks",
-      "commits_url" : "https://api.github.com/gists/200e6768559e4ecd7650d72e3b83fb14/commits",
-      "id" : "200e6768559e4ecd7650d72e3b83fb14",
-      "node_id" : "MDQ6R2lzdDIwMGU2NzY4NTU5ZTRlY2Q3NjUwZDcyZTNiODNmYjE0",
-      "git_pull_url" : "https://gist.github.com/200e6768559e4ecd7650d72e3b83fb14.git",
-      "git_push_url" : "https://gist.github.com/200e6768559e4ecd7650d72e3b83fb14.git",
-      "html_url" : "https://gist.github.com/200e6768559e4ecd7650d72e3b83fb14",
+      "url" : "https://api.github.com/gists/a21cbe4a86345ca5e70bcfe98f883463",
+      "forks_url" : "https://api.github.com/gists/a21cbe4a86345ca5e70bcfe98f883463/forks",
+      "commits_url" : "https://api.github.com/gists/a21cbe4a86345ca5e70bcfe98f883463/commits",
+      "id" : "a21cbe4a86345ca5e70bcfe98f883463",
+      "node_id" : "MDQ6R2lzdGEyMWNiZTRhODYzNDVjYTVlNzBiY2ZlOThmODgzNDYz",
+      "git_pull_url" : "https://gist.github.com/a21cbe4a86345ca5e70bcfe98f883463.git",
+      "git_push_url" : "https://gist.github.com/a21cbe4a86345ca5e70bcfe98f883463.git",
+      "html_url" : "https://gist.github.com/a21cbe4a86345ca5e70bcfe98f883463",
       "files" : {
-        "EQ96b_kqWK" : {
-          "filename" : "EQ96b_kqWK",
+        "hello_world.txt" : {
+          "filename" : "hello_world.txt",
           "type" : "text/plain",
-          "language" : null,
-          "raw_url" : "https://gist.githubusercontent.com/vadimdeineka/200e6768559e4ecd7650d72e3b83fb14/raw/11b67a41ac4cdb30c686321e3403023721d8f603/EQ96b_kqWK",
-          "size" : 10,
+          "language" : "Text",
+          "raw_url" : "https://gist.githubusercontent.com/vadimdeineka/a21cbe4a86345ca5e70bcfe98f883463/raw/d66c8d4d32962340839b015b7849e067d0f79479/hello_world.txt",
+          "size" : 14,
           "truncated" : false,
-          "content" : "DtNr_ljrZK"
-        },
-        "U9YSNt89wr" : {
-          "filename" : "U9YSNt89wr",
-          "type" : "text/plain",
-          "language" : null,
-          "raw_url" : "https://gist.githubusercontent.com/vadimdeineka/200e6768559e4ecd7650d72e3b83fb14/raw/3e5495f4a1174a2987add9e0b37114fce8673ffb/U9YSNt89wr",
-          "size" : 10,
-          "truncated" : false,
-          "content" : "lEsqZ1sHmx"
+          "content" : "Hello \nWorld\n!"
         }
       },
       "public" : false,
-      "created_at" : "2020-05-23T17:56:44Z",
-      "updated_at" : "2020-05-23T17:56:44Z",
-      "description" : "AhBbLNcd12",
+      "created_at" : "2020-05-25T09:04:06Z",
+      "updated_at" : "2020-05-25T09:04:06Z",
+      "description" : "Hello World!",
       "comments" : 0,
       "user" : null,
-      "comments_url" : "https://api.github.com/gists/200e6768559e4ecd7650d72e3b83fb14/comments",
+      "comments_url" : "https://api.github.com/gists/a21cbe4a86345ca5e70bcfe98f883463/comments",
       "owner" : {
         "login" : "vadimdeineka",
         "id" : 9740075,
@@ -105,14 +93,14 @@
           "type" : "User",
           "site_admin" : false
         },
-        "version" : "c4957b4a7097bbd45f0c992a4f4fb21f66fe05d3",
-        "committed_at" : "2020-05-23T17:56:43Z",
+        "version" : "f6e36acd25882bfd8adfe120fd719de9ca2c79ac",
+        "committed_at" : "2020-05-25T09:04:06Z",
         "change_status" : {
-          "total" : 2,
-          "additions" : 2,
+          "total" : 3,
+          "additions" : 3,
           "deletions" : 0
         },
-        "url" : "https://api.github.com/gists/200e6768559e4ecd7650d72e3b83fb14/c4957b4a7097bbd45f0c992a4f4fb21f66fe05d3"
+        "url" : "https://api.github.com/gists/a21cbe4a86345ca5e70bcfe98f883463/f6e36acd25882bfd8adfe120fd719de9ca2c79ac"
       } ],
       "truncated" : false
     }
@@ -120,7 +108,7 @@
 }, {
   "request" : {
     "method" : "GET",
-    "url" : "https://api.github.com/gists/200e6768559e4ecd7650d72e3b83fb14",
+    "url" : "https://api.github.com/gists/a21cbe4a86345ca5e70bcfe98f883463",
     "headers" : {
       "authorization" : "********",
       "accept" : "application/json, application/*+json"
@@ -135,41 +123,32 @@
       "content-type" : "application/json; charset=utf-8"
     },
     "body" : {
-      "url" : "https://api.github.com/gists/200e6768559e4ecd7650d72e3b83fb14",
-      "forks_url" : "https://api.github.com/gists/200e6768559e4ecd7650d72e3b83fb14/forks",
-      "commits_url" : "https://api.github.com/gists/200e6768559e4ecd7650d72e3b83fb14/commits",
-      "id" : "200e6768559e4ecd7650d72e3b83fb14",
-      "node_id" : "MDQ6R2lzdDIwMGU2NzY4NTU5ZTRlY2Q3NjUwZDcyZTNiODNmYjE0",
-      "git_pull_url" : "https://gist.github.com/200e6768559e4ecd7650d72e3b83fb14.git",
-      "git_push_url" : "https://gist.github.com/200e6768559e4ecd7650d72e3b83fb14.git",
-      "html_url" : "https://gist.github.com/200e6768559e4ecd7650d72e3b83fb14",
+      "url" : "https://api.github.com/gists/a21cbe4a86345ca5e70bcfe98f883463",
+      "forks_url" : "https://api.github.com/gists/a21cbe4a86345ca5e70bcfe98f883463/forks",
+      "commits_url" : "https://api.github.com/gists/a21cbe4a86345ca5e70bcfe98f883463/commits",
+      "id" : "a21cbe4a86345ca5e70bcfe98f883463",
+      "node_id" : "MDQ6R2lzdGEyMWNiZTRhODYzNDVjYTVlNzBiY2ZlOThmODgzNDYz",
+      "git_pull_url" : "https://gist.github.com/a21cbe4a86345ca5e70bcfe98f883463.git",
+      "git_push_url" : "https://gist.github.com/a21cbe4a86345ca5e70bcfe98f883463.git",
+      "html_url" : "https://gist.github.com/a21cbe4a86345ca5e70bcfe98f883463",
       "files" : {
-        "EQ96b_kqWK" : {
-          "filename" : "EQ96b_kqWK",
+        "hello_world.txt" : {
+          "filename" : "hello_world.txt",
           "type" : "text/plain",
-          "language" : null,
-          "raw_url" : "https://gist.githubusercontent.com/vadimdeineka/200e6768559e4ecd7650d72e3b83fb14/raw/11b67a41ac4cdb30c686321e3403023721d8f603/EQ96b_kqWK",
-          "size" : 10,
+          "language" : "Text",
+          "raw_url" : "https://gist.githubusercontent.com/vadimdeineka/a21cbe4a86345ca5e70bcfe98f883463/raw/d66c8d4d32962340839b015b7849e067d0f79479/hello_world.txt",
+          "size" : 14,
           "truncated" : false,
-          "content" : "DtNr_ljrZK"
-        },
-        "U9YSNt89wr" : {
-          "filename" : "U9YSNt89wr",
-          "type" : "text/plain",
-          "language" : null,
-          "raw_url" : "https://gist.githubusercontent.com/vadimdeineka/200e6768559e4ecd7650d72e3b83fb14/raw/3e5495f4a1174a2987add9e0b37114fce8673ffb/U9YSNt89wr",
-          "size" : 10,
-          "truncated" : false,
-          "content" : "lEsqZ1sHmx"
+          "content" : "Hello \nWorld\n!"
         }
       },
       "public" : false,
-      "created_at" : "2020-05-23T17:56:44Z",
-      "updated_at" : "2020-05-23T17:56:44Z",
-      "description" : "AhBbLNcd12",
+      "created_at" : "2020-05-25T09:04:06Z",
+      "updated_at" : "2020-05-25T09:04:06Z",
+      "description" : "Hello World!",
       "comments" : 0,
       "user" : null,
-      "comments_url" : "https://api.github.com/gists/200e6768559e4ecd7650d72e3b83fb14/comments",
+      "comments_url" : "https://api.github.com/gists/a21cbe4a86345ca5e70bcfe98f883463/comments",
       "owner" : {
         "login" : "vadimdeineka",
         "id" : 9740075,
@@ -212,14 +191,14 @@
           "type" : "User",
           "site_admin" : false
         },
-        "version" : "c4957b4a7097bbd45f0c992a4f4fb21f66fe05d3",
-        "committed_at" : "2020-05-23T17:56:43Z",
+        "version" : "f6e36acd25882bfd8adfe120fd719de9ca2c79ac",
+        "committed_at" : "2020-05-25T09:04:06Z",
         "change_status" : {
-          "total" : 2,
-          "additions" : 2,
+          "total" : 3,
+          "additions" : 3,
           "deletions" : 0
         },
-        "url" : "https://api.github.com/gists/200e6768559e4ecd7650d72e3b83fb14/c4957b4a7097bbd45f0c992a4f4fb21f66fe05d3"
+        "url" : "https://api.github.com/gists/a21cbe4a86345ca5e70bcfe98f883463/f6e36acd25882bfd8adfe120fd719de9ca2c79ac"
       } ],
       "truncated" : false
     }
@@ -227,7 +206,7 @@
 }, {
   "request" : {
     "method" : "DELETE",
-    "url" : "https://api.github.com/gists/200e6768559e4ecd7650d72e3b83fb14",
+    "url" : "https://api.github.com/gists/a21cbe4a86345ca5e70bcfe98f883463",
     "headers" : {
       "authorization" : "********",
       "accept" : "application/json, application/*+json"

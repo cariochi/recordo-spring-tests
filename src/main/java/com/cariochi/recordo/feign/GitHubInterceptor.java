@@ -1,4 +1,4 @@
-package com.cariochi.recordo;
+package com.cariochi.recordo.feign;
 
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
@@ -14,6 +14,6 @@ public class GitHubInterceptor implements RequestInterceptor {
     @Override
     public void apply(RequestTemplate requestTemplate) {
         requestTemplate
-                .header("Authorization", "Bearer" + key);
+                .header("Authorization", "Bearer " + key);
     }
 }

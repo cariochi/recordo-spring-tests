@@ -1,13 +1,10 @@
-package com.cariochi.recordo;
+package com.cariochi.recordo.dto;
 
 import lombok.*;
 
 import java.util.Map;
 
 @Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 public class Gist {
 
     private String description;
