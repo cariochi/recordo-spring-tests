@@ -1,6 +1,6 @@
 package com.cariochi.recordo;
 
-import com.cariochi.recordo.annotation.GivenValue;
+import com.cariochi.recordo.annotation.Given;
 import com.cariochi.recordo.annotation.HttpMock;
 import com.cariochi.recordo.annotation.Verify;
 import com.cariochi.recordo.dto.Gist;
@@ -18,8 +18,9 @@ public abstract class AbstractTest {
     @Autowired
     protected GitHub gitHub;
 
-    @GivenValue("/gist.json")
+    @Given(file = "/gist.json")
     private Gist gist;
+
     private List<GistResponse> responses;
 
     @Test
