@@ -1,4 +1,4 @@
-package com.cariochi.recordo.mockmvc.dto;
+package com.cariochi.recordo.client.dto;
 
 import lombok.Data;
 import lombok.Singular;

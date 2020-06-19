@@ -1,7 +1,7 @@
-package com.cariochi.recordo.mockmvc;
+package com.cariochi.recordo.client;
 
-import com.cariochi.recordo.mockmvc.dto.Gist;
-import com.cariochi.recordo.mockmvc.dto.GistResponse;
+import com.cariochi.recordo.client.dto.Gist;
+import com.cariochi.recordo.client.dto.GistResponse;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 

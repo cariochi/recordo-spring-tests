@@ -1,9 +1,9 @@
-package com.cariochi.recordo.mockmvc.resttemplate;
+package com.cariochi.recordo.client.resttemplate;
 
 import com.cariochi.recordo.RecordoTestsApplication;
 import com.cariochi.recordo.annotation.EnableRecordo;
-import com.cariochi.recordo.mockmvc.AbstractTest;
-import com.cariochi.recordo.mockmvc.GitHub;
+import com.cariochi.recordo.client.AbstractTest;
+import com.cariochi.recordo.client.GitHub;
 import org.apache.http.client.HttpClient;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;

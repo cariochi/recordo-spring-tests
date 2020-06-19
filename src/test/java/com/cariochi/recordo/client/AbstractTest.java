@@ -1,11 +1,11 @@
-package com.cariochi.recordo.mockmvc;
+package com.cariochi.recordo.client;
 
 import com.cariochi.recordo.annotation.Given;
 import com.cariochi.recordo.annotation.HttpMock;
 import com.cariochi.recordo.annotation.Verify;
+import com.cariochi.recordo.client.dto.Gist;
+import com.cariochi.recordo.client.dto.GistResponse;
 import com.cariochi.recordo.junit5.RecordoExtension;
-import com.cariochi.recordo.mockmvc.dto.Gist;
-import com.cariochi.recordo.mockmvc.dto.GistResponse;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;

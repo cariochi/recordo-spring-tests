@@ -1,4 +1,4 @@
-package com.cariochi.recordo.mockmvc.feign;
+package com.cariochi.recordo.client.feign;
 
 import feign.RequestInterceptor;
 import feign.RequestTemplate;

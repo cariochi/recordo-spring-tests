@@ -1,8 +1,8 @@
-package com.cariochi.recordo.mockmvc.resttemplate;
+package com.cariochi.recordo.client.resttemplate;
 
-import com.cariochi.recordo.mockmvc.GitHub;
-import com.cariochi.recordo.mockmvc.dto.Gist;
-import com.cariochi.recordo.mockmvc.dto.GistResponse;
+import com.cariochi.recordo.client.GitHub;
+import com.cariochi.recordo.client.dto.Gist;
+import com.cariochi.recordo.client.dto.GistResponse;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.web.client.RestTemplate;

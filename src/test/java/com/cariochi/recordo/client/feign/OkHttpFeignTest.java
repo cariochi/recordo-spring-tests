@@ -1,13 +1,11 @@
-package com.cariochi.recordo.mockmvc.feign;
+package com.cariochi.recordo.client.feign;
 
 import com.cariochi.recordo.RecordoTestsApplication;
 import com.cariochi.recordo.annotation.EnableRecordo;
-import com.cariochi.recordo.mockmvc.AbstractTest;
+import com.cariochi.recordo.client.AbstractTest;
 import feign.Client;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.http.client.HttpClient;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
+import okhttp3.OkHttpClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,28 +15,29 @@ import org.springframework.context.annotation.Configuration;
 
 @Slf4j
 @SpringBootTest(
-        classes = {RecordoTestsApplication.class, ApacheFeignTest.Config.class},
-        properties = "feign.httpclient.enabled=true"
+        classes = {RecordoTestsApplication.class, OkHttpFeignTest.Config.class},
+        properties = "feign.okhttp.enabled=true"
 )
-class ApacheFeignTest extends AbstractTest {
+class OkHttpFeignTest extends AbstractTest {
 
     @Autowired
     @EnableRecordo
-    private HttpClient httpClient;
+    private OkHttpClient client;
 
     @Configuration
-    @ConditionalOnProperty("feign.httpclient.enabled")
+    @ConditionalOnProperty("feign.okhttp.enabled")
     @EnableFeignClients
     public static class Config {
 
         @Bean
-        public CloseableHttpClient httpClient() {
-            return HttpClients.createDefault();
+        public OkHttpClient client() {
+            return new OkHttpClient();
         }
 
         @Bean
         public Client feignClient() {
-            return new feign.httpclient.ApacheHttpClient(httpClient());
+            return new feign.okhttp.OkHttpClient(client());
         }
     }
+
 }

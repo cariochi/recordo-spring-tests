@@ -1,8 +1,8 @@
-package com.cariochi.recordo.mockmvc.feign;
+package com.cariochi.recordo.client.feign;
 
-import com.cariochi.recordo.mockmvc.GitHub;
-import com.cariochi.recordo.mockmvc.dto.Gist;
-import com.cariochi.recordo.mockmvc.dto.GistResponse;
+import com.cariochi.recordo.client.GitHub;
+import com.cariochi.recordo.client.dto.Gist;
+import com.cariochi.recordo.client.dto.GistResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
