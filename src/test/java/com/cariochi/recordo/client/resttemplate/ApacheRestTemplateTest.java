@@ -2,6 +2,7 @@ package com.cariochi.recordo.client.resttemplate;
 
 import com.cariochi.recordo.RecordoTestsApplication;
 import com.cariochi.recordo.annotation.EnableRecordo;
+import com.cariochi.recordo.annotation.Resources;
 import com.cariochi.recordo.client.AbstractTest;
 import com.cariochi.recordo.client.GitHub;
 import org.apache.http.client.HttpClient;
@@ -19,6 +20,7 @@ import org.springframework.web.client.RestTemplate;
         classes = {RecordoTestsApplication.class, ApacheRestTemplateTest.Config.class},
         properties = "resttemplate.httpclient.enabled=true"
 )
+@Resources("/client/rest-template-ok-apache")
 public class ApacheRestTemplateTest extends AbstractTest {
 
     @Autowired
