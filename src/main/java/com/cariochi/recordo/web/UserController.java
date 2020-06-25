@@ -16,7 +16,7 @@ public class UserController {
 
     @PostMapping
     public UserDto create(@RequestBody UserDto userDto) {
-        userDto.setId(10);
+        userDto.setId(1);
         return userDto;
     }
 
@@ -29,7 +29,7 @@ public class UserController {
     @PatchMapping("/{id}")
     public UserDto patch(@PathVariable int id, @RequestBody UserDto userDto) {
         userDto.setId(id);
-        userDto.setName("Patched");
+        userDto.setName("Updated");
         return userDto;
     }
 

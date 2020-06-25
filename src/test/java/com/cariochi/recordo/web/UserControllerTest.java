@@ -2,12 +2,13 @@ package com.cariochi.recordo.web;
 
 import com.cariochi.recordo.annotation.EnableRecordo;
 import com.cariochi.recordo.annotation.Given;
+import com.cariochi.recordo.annotation.Resources;
 import com.cariochi.recordo.annotation.Verify;
 import com.cariochi.recordo.junit5.RecordoExtension;
 import com.cariochi.recordo.mockmvc.Request;
 import com.cariochi.recordo.mockmvc.Response;
 import com.cariochi.recordo.mockmvc.annotations.*;
-import com.cariochi.recordo.verify.Verifier;
+import com.cariochi.recordo.verify.Expected;
 import com.cariochi.recordo.web.dto.UserDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -22,6 +23,7 @@ import java.util.List;
 @Slf4j
 @WebMvcTest(UserController.class)
 @ExtendWith(RecordoExtension.class)
+@Resources("/users")
 @RequiredArgsConstructor
 class UserControllerTest {
 
@@ -32,118 +34,118 @@ class UserControllerTest {
     @Test
     void should_get_user_by_id(
             @Get("/users/{id}?name={name}") @Headers("locale: UA") Request<UserDto> request,
-            @Verify("response") Verifier verifier
+            @Verify("get_user_response.json") Expected<Response<UserDto>> expected
     ) {
         final Response<UserDto> response = request.execute(1, "Test User");
-        verifier.verify(response);
+        expected.assertEquals(response);
     }
 
     @Test
     void should_get_user_by_id(
             @Get("/users/1?name=Test User") @Headers("locale: UA") Response<UserDto> response,
-            @Verify("response") Verifier verifier
+            @Verify("get_user_response.json") Expected<Response<UserDto>> expected
     ) {
-        verifier.verify(response);
+        expected.assertEquals(response);
     }
 
     @Test
     void should_get_user_by_id(
             @Get("/users/1?name=Test User") @Headers("locale: UA") UserDto user,
-            @Verify("user") Verifier verifier
+            @Verify("user.json") Expected<UserDto> expected
     ) {
-        verifier.verify(user);
+        expected.assertEquals(user);
     }
 
     @Test
     void should_get_all_users(
             @Get("/users") Request<List<UserDto>> request,
-            @Verify("response") Verifier verifier
+            @Verify("get_all_users_response.json") Expected<Response<List<UserDto>>> expected
     ) {
         final Response<List<UserDto>> response = request.execute();
-        verifier.verify(response);
+        expected.assertEquals(response);
     }
 
     @Test
     void should_get_all_users(
             @Get("/users") Response<List<UserDto>> response,
-            @Verify("response") Verifier verifier
+            @Verify("get_all_users_response.json") Expected<Response<List<UserDto>>> expected
     ) {
-        verifier.verify(response);
+        expected.assertEquals(response);
     }
 
     @Test
     void should_get_all_users(
             @Get("/users") List<UserDto> users,
-            @Verify("users") Verifier verifier
+            @Verify("users.json") Expected<List<UserDto>> expected
     ) {
-        verifier.verify(users);
+        expected.assertEquals(users);
     }
 
     @Test
     void should_create_user(
-            @Given("user") UserDto user,
+            @Given("new_user.json") UserDto user,
             @Post("/users") Request<UserDto> request,
-            @Verify("response") Verifier verifier
+            @Verify("create_user_response.json") Expected<Response<UserDto>> expected
     ) {
         final Response<UserDto> response = request.withBody(user).execute();
-        verifier.verify(response);
+        expected.assertEquals(response);
     }
 
     @Test
     void should_create_user(
-            @Post("/users") @Body("user") Request<UserDto> request,
-            @Verify("response") Verifier verifier
+            @Post("/users") @Body("new_user.json") Request<UserDto> request,
+            @Verify("create_user_response.json") Expected<Response<UserDto>> expected
     ) {
         final Response<UserDto> response = request.execute();
-        verifier.verify(response);
+        expected.assertEquals(response);
     }
 
     @Test
     void should_create_user(
-            @Post("/users") @Body("user") Response<UserDto> response,
-            @Verify("response") Verifier verifier
+            @Post("/users") @Body("new_user.json") Response<UserDto> response,
+            @Verify("create_user_response.json") Expected<Response<UserDto>> expected
     ) {
-        verifier.verify(response);
+        expected.assertEquals(response);
     }
 
     @Test
     void should_create_user(
-            @Post("/users") @Body("user") UserDto user,
-            @Verify("user") Verifier verifier
+            @Post("/users") @Body("new_user.json") UserDto user,
+            @Verify("user.json") Expected<UserDto> expected
     ) {
-        verifier.verify(user);
+        expected.assertEquals(user);
     }
 
     @Test
     void should_delete_user_by_id(
             @Delete("/users/{id}") Request<Void> request,
-            @Verify("response") Verifier verifier
+            @Verify("delete_user_response.json") Expected<Response<Void>> expected
     ) {
         final Response<Void> response = request.execute(1);
-        verifier.verify(response);
+        expected.assertEquals(response);
     }
 
     @Test
     void should_delete_user_by_id(
-            @Delete("/users/1") Response<UserDto> response,
-            @Verify("response") Verifier verifier
+            @Delete("/users/1") Response<Void> response,
+            @Verify("delete_user_response.json") Expected<Response<Void>> expected
     ) {
-        verifier.verify(response);
+        expected.assertEquals(response);
     }
 
     @Test
     void should_update_user(
-            @Put("/users") @Body("user") UserDto user,
-            @Verify("user") Verifier verifier
+            @Put("/users") @Body("user.json") UserDto user,
+            @Verify("updated_user.json") Expected<UserDto> expected
     ) {
-        verifier.verify(user);
+        expected.assertEquals(user);
     }
 
     @Test
     void should_patch_user(
-            @Patch("/users/100") @Body("user") UserDto user,
-            @Verify("user") Verifier verifier
+            @Patch("/users/1") @Body("user.json") UserDto user,
+            @Verify("updated_user.json") Expected<UserDto> expected
     ) {
-        verifier.verify(user);
+        expected.assertEquals(user);
     }
 }

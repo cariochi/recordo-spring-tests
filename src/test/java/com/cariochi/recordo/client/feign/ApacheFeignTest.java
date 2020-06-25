@@ -2,6 +2,7 @@ package com.cariochi.recordo.client.feign;
 
 import com.cariochi.recordo.RecordoTestsApplication;
 import com.cariochi.recordo.annotation.EnableRecordo;
+import com.cariochi.recordo.annotation.Resources;
 import com.cariochi.recordo.client.AbstractTest;
 import feign.Client;
 import lombok.extern.slf4j.Slf4j;
@@ -20,6 +21,7 @@ import org.springframework.context.annotation.Configuration;
         classes = {RecordoTestsApplication.class, ApacheFeignTest.Config.class},
         properties = "feign.httpclient.enabled=true"
 )
+@Resources("/client/feign-apache")
 class ApacheFeignTest extends AbstractTest {
 
     @Autowired

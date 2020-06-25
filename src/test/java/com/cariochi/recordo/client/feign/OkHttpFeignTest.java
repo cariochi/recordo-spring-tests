@@ -2,6 +2,7 @@ package com.cariochi.recordo.client.feign;
 
 import com.cariochi.recordo.RecordoTestsApplication;
 import com.cariochi.recordo.annotation.EnableRecordo;
+import com.cariochi.recordo.annotation.Resources;
 import com.cariochi.recordo.client.AbstractTest;
 import feign.Client;
 import lombok.extern.slf4j.Slf4j;
@@ -18,6 +19,7 @@ import org.springframework.context.annotation.Configuration;
         classes = {RecordoTestsApplication.class, OkHttpFeignTest.Config.class},
         properties = "feign.okhttp.enabled=true"
 )
+@Resources("/client/feign-ok-http")
 class OkHttpFeignTest extends AbstractTest {
 
     @Autowired
