@@ -5,4 +5,4 @@ feign:
         requestInterceptors:
           - com.cariochi.recordo.mockhttp.feign.GitHubInterceptor
 
-github.key: ce47121c83909d01b49615c173a82ba9535f22bb
+github.key: KEY
