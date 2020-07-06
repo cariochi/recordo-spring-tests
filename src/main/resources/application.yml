@@ -3,6 +3,6 @@ feign:
     config:
       GitHub:
         requestInterceptors:
-          - com.cariochi.recordo.client.feign.GitHubInterceptor
+          - com.cariochi.recordo.mockhttp.feign.GitHubInterceptor
 
-github.key: KEY
+github.key: ce47121c83909d01b49615c173a82ba9535f22bb
