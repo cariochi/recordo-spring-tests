@@ -11,6 +11,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
@@ -30,13 +31,17 @@ class BookServiceTest {
     void should_get_book_by_id(
             @Verify("/books/book.json") Expected<Book> expected
     ) {
-        expected.assertEquals(bookService.findById(1L));
+        final Book actual = bookService.findById(1L);
+        expected.assertEquals(actual);
     }
 
     @Test
     void should_get_books_by_author(
             @Given("/books/author.json") Author author,
-            @Verify(value = "/books/short_books.json", included = {"id", "title", "author.id"}) Expected<List<Book>> expected
+            @Verify(
+                    value = "/books/short_books.json",
+                    included = {"content.id", "content.title", "content.author.id"}
+            ) Expected<Page<Book>> expected
     ) {
         expected.assertEquals(bookService.findAllByAuthor(author));
     }
@@ -55,7 +60,7 @@ class BookServiceTest {
     void should_add_book_to_shelf(
             @Given("/books/book.json") Book book,
             @Given("/books/books.json") List<Book> books,
-            @Verify("/books/expected_books.json") Expected<List<Book>> expected
+            @Verify("/books/expected_books.json") Expected<Page<Book>> expected
     ) {
         expected.assertEquals(bookService.merge(books, book));
     }

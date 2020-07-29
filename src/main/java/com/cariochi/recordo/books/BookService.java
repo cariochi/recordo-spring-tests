@@ -2,6 +2,8 @@ package com.cariochi.recordo.books;
 
 import com.cariochi.recordo.books.dto.Author;
 import com.cariochi.recordo.books.dto.Book;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 
 import java.util.List;
 import java.util.stream.Stream;
@@ -22,16 +24,28 @@ public class BookService {
                 .orElse(null);
     }
 
-    public List<Book> findAllByAuthor(Author author) {
+    public Page<Book> findAllByAuthor(Author author) {
         return books();
     }
 
-    public List<Book> books() {
-        return asList(
+    public Page<Book> books() {
+        return new PageImpl<>(asList(
                 book(1L, "Othello"),
                 book(2L, "Macbeth"),
                 book(3L, "Richard II")
-        );
+        ));
+    }
+
+    public Page<Book> merge(List<Book> books, Book book) {
+        return new PageImpl<>(Stream.concat(books.stream(), Stream.of(book))
+                .sorted(comparing(Book::getTitle))
+                .collect(toList()));
+    }
+
+    public Book create(Book book) {
+        return book
+                .withAuthor(authorService.findById(book.getAuthor().getId()))
+                .withId(nextLong());
     }
 
     private Book book(Long id, String title) {
@@ -48,17 +62,5 @@ public class BookService {
                 .firstName("William")
                 .lastName("Shakespeare")
                 .build();
-    }
-
-    public List<Book> merge(List<Book> books, Book book) {
-        return Stream.concat(books.stream(), Stream.of(book))
-                .sorted(comparing(Book::getTitle))
-                .collect(toList());
-    }
-
-    public Book create(Book book) {
-        return book
-                .withAuthor(authorService.findById(book.getAuthor().getId()))
-                .withId(nextLong());
     }
 }
