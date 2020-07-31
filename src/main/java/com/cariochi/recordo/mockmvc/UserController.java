@@ -2,9 +2,10 @@ package com.cariochi.recordo.mockmvc;
 
 import com.cariochi.recordo.mockmvc.dto.UserDto;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
 
 import static java.util.Arrays.asList;
@@ -45,11 +46,11 @@ public class UserController {
     }
 
     @GetMapping
-    public List<UserDto> findAll() {
-        return asList(
+    public Page<UserDto> findAll() {
+        return new PageImpl<>(asList(
                 UserDto.builder().id(1).name("user_" + 1).build(),
                 UserDto.builder().id(2).name("user_" + 2).build()
-        );
+        ));
     }
 
     @DeleteMapping("/{id}")

@@ -12,9 +12,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.data.domain.Page;
 import org.springframework.test.web.servlet.MockMvc;
-
-import java.util.List;
 
 @Slf4j
 @WebMvcTest(UserController.class)
@@ -28,7 +27,7 @@ class MockMvcTest {
 
     @Test
     void should_get_user_by_id(
-            @Get("/users/{id}?name={name}") @Headers("locale: UA") Request<UserDto> request,
+            @GET("/users/{id}?name={name}") @Headers("locale: UA") Request<UserDto> request,
             @Verify("/mockmvc/get_user_response.json") Expected<Response<UserDto>> expected
     ) {
         final Response<UserDto> response = request.execute(1, "Test User");
@@ -37,7 +36,7 @@ class MockMvcTest {
 
     @Test
     void should_get_user_by_id(
-            @Get("/users/1?name=Test User") @Headers("locale: UA") Response<UserDto> response,
+            @GET("/users/1?name=Test User") @Headers("locale: UA") Response<UserDto> response,
             @Verify("/mockmvc/get_user_response.json") Expected<Response<UserDto>> expected
     ) {
         expected.assertEquals(response);
@@ -45,7 +44,7 @@ class MockMvcTest {
 
     @Test
     void should_get_user_by_id(
-            @Get("/users/1?name=Test User") @Headers("locale: UA") UserDto user,
+            @GET("/users/1?name=Test User") @Headers("locale: UA") UserDto user,
             @Verify("/mockmvc/user.json") Expected<UserDto> expected
     ) {
         expected.assertEquals(user);
@@ -53,25 +52,25 @@ class MockMvcTest {
 
     @Test
     void should_get_all_users(
-            @Get("/users") Request<List<UserDto>> request,
-            @Verify("/mockmvc/get_all_users_response.json") Expected<Response<List<UserDto>>> expected
+            @GET("/users") Request<Page<UserDto>> request,
+            @Verify("/mockmvc/get_all_users_response.json") Expected<Response<Page<UserDto>>> expected
     ) {
-        final Response<List<UserDto>> response = request.execute();
+        final Response<Page<UserDto>> response = request.execute();
         expected.assertEquals(response);
     }
 
     @Test
     void should_get_all_users(
-            @Get("/users") Response<List<UserDto>> response,
-            @Verify("/mockmvc/get_all_users_response.json") Expected<Response<List<UserDto>>> expected
+            @GET("/users") Response<Page<UserDto>> response,
+            @Verify("/mockmvc/get_all_users_response.json") Expected<Response<Page<UserDto>>> expected
     ) {
         expected.assertEquals(response);
     }
 
     @Test
     void should_get_all_users(
-            @Get("/users") List<UserDto> users,
-            @Verify("/mockmvc/users.json") Expected<List<UserDto>> expected
+            @GET("/users") Page<UserDto> users,
+            @Verify("/mockmvc/users.json") Expected<Page<UserDto>> expected
     ) {
         expected.assertEquals(users);
     }
@@ -79,7 +78,7 @@ class MockMvcTest {
     @Test
     void should_create_user(
             @Given("/mockmvc/new_user.json") UserDto user,
-            @Post("/users") Request<UserDto> request,
+            @POST("/users") Request<UserDto> request,
             @Verify("/mockmvc/create_user_response.json") Expected<Response<UserDto>> expected
     ) {
         final Response<UserDto> response = request.withBody(user).execute();
@@ -88,7 +87,7 @@ class MockMvcTest {
 
     @Test
     void should_create_user(
-            @Post("/users") @Body("/mockmvc/new_user.json") Request<UserDto> request,
+            @POST("/users") @Body("/mockmvc/new_user.json") Request<UserDto> request,
             @Verify("/mockmvc/create_user_response.json") Expected<Response<UserDto>> expected
     ) {
         final Response<UserDto> response = request.execute();
@@ -97,7 +96,7 @@ class MockMvcTest {
 
     @Test
     void should_create_user(
-            @Post("/users") @Body("/mockmvc/new_user.json") Response<UserDto> response,
+            @POST("/users") @Body("/mockmvc/new_user.json") Response<UserDto> response,
             @Verify("/mockmvc/create_user_response.json") Expected<Response<UserDto>> expected
     ) {
         expected.assertEquals(response);
@@ -105,7 +104,7 @@ class MockMvcTest {
 
     @Test
     void should_create_user(
-            @Post("/users") @Body("/mockmvc/new_user.json") UserDto user,
+            @POST("/users") @Body("/mockmvc/new_user.json") UserDto user,
             @Verify("/mockmvc/user.json") Expected<UserDto> expected
     ) {
         expected.assertEquals(user);
@@ -113,7 +112,7 @@ class MockMvcTest {
 
     @Test
     void should_delete_user_by_id(
-            @Delete("/users/{id}") Request<Void> request,
+            @DELETE("/users/{id}") Request<Void> request,
             @Verify("/mockmvc/delete_user_response.json") Expected<Response<Void>> expected
     ) {
         final Response<Void> response = request.execute(1);
@@ -122,7 +121,7 @@ class MockMvcTest {
 
     @Test
     void should_delete_user_by_id(
-            @Delete("/users/1") Response<Void> response,
+            @DELETE("/users/1") Response<Void> response,
             @Verify("/mockmvc/delete_user_response.json") Expected<Response<Void>> expected
     ) {
         expected.assertEquals(response);
@@ -130,7 +129,7 @@ class MockMvcTest {
 
     @Test
     void should_update_user(
-            @Put("/users") @Body("/mockmvc/user.json") UserDto user,
+            @PUT("/users") @Body("/mockmvc/user.json") UserDto user,
             @Verify("/mockmvc/updated_user.json") Expected<UserDto> expected
     ) {
         expected.assertEquals(user);
@@ -138,7 +137,7 @@ class MockMvcTest {
 
     @Test
     void should_patch_user(
-            @Patch("/users/1") @Body("/mockmvc/user.json") UserDto user,
+            @PATCH("/users/1") @Body("/mockmvc/user.json") UserDto user,
             @Verify("/mockmvc/updated_user.json") Expected<UserDto> expected
     ) {
         expected.assertEquals(user);
