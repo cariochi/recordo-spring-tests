@@ -1,13 +1,9 @@
 package com.cariochi.recordo.mockhttp;
 
-import com.cariochi.recordo.EnableRecordo;
-import com.cariochi.recordo.RecordoExtension;
-import com.cariochi.recordo.RecordoTestsApplication;
-import com.cariochi.recordo.given.Given;
+import com.cariochi.recordo.*;
 import com.cariochi.recordo.mockhttp.dto.Gist;
 import com.cariochi.recordo.mockhttp.dto.GistResponse;
 import com.cariochi.recordo.verify.Expected;
-import com.cariochi.recordo.verify.Verify;
 import feign.Client;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.client.HttpClient;

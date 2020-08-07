@@ -1,11 +1,11 @@
 package com.cariochi.recordo.books;
 
+import com.cariochi.recordo.Given;
 import com.cariochi.recordo.RecordoExtension;
+import com.cariochi.recordo.Verify;
 import com.cariochi.recordo.books.dto.Author;
 import com.cariochi.recordo.books.dto.Book;
-import com.cariochi.recordo.given.Given;
 import com.cariochi.recordo.verify.Expected;
-import com.cariochi.recordo.verify.Verify;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

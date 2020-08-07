@@ -1,11 +1,11 @@
 package com.cariochi.recordo.mockmvc;
 
 import com.cariochi.recordo.EnableRecordo;
+import com.cariochi.recordo.Given;
 import com.cariochi.recordo.RecordoExtension;
-import com.cariochi.recordo.given.Given;
+import com.cariochi.recordo.Verify;
 import com.cariochi.recordo.mockmvc.dto.UserDto;
 import com.cariochi.recordo.verify.Expected;
-import com.cariochi.recordo.verify.Verify;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
