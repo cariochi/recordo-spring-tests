@@ -1,0 +1,27 @@
+{
+  "content" : [ {
+    "id" : 1,
+    "author" : {
+      "id" : 1,
+      "firstName" : "William",
+      "lastName" : "Shakespeare"
+    },
+    "title" : "Othello"
+  }, {
+    "id" : 2,
+    "author" : {
+      "id" : 1,
+      "firstName" : "William",
+      "lastName" : "Shakespeare"
+    },
+    "title" : "Macbeth"
+  }, {
+    "id" : 3,
+    "author" : {
+      "id" : 1,
+      "firstName" : "William",
+      "lastName" : "Shakespeare"
+    },
+    "title" : "Richard II"
+  } ]
+}

@@ -1,0 +1,34 @@
+{
+  "content" : [ {
+    "id" : 1,
+    "name" : "user_1"
+  }, {
+    "id" : 2,
+    "name" : "user_2"
+  } ],
+  "empty" : false,
+  "first" : true,
+  "last" : true,
+  "number" : 0,
+  "numberOfElements" : 2,
+  "pageable" : {
+    "offset" : 0,
+    "pageNumber" : 0,
+    "pageSize" : 2,
+    "paged" : true,
+    "sort" : {
+      "empty" : true,
+      "sorted" : false,
+      "unsorted" : true
+    },
+    "unpaged" : false
+  },
+  "size" : 2,
+  "sort" : {
+    "empty" : true,
+    "sorted" : false,
+    "unsorted" : true
+  },
+  "totalElements" : 2,
+  "totalPages" : 1
+}
