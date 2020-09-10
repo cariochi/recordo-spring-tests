@@ -3,9 +3,8 @@ package com.cariochi.recordo.mockmvc;
 import com.cariochi.recordo.EnableRecordo;
 import com.cariochi.recordo.Given;
 import com.cariochi.recordo.RecordoExtension;
-import com.cariochi.recordo.Verify;
+import com.cariochi.recordo.given.Assertion;
 import com.cariochi.recordo.mockmvc.dto.UserDto;
-import com.cariochi.recordo.verify.Expected;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -28,118 +27,118 @@ class MockMvcTest {
     @Test
     void should_get_user_by_id(
             @GET("/users/{id}?name={name}") @Headers("locale: UA") Request<UserDto> request,
-            @Verify("/mockmvc/get_user_response.json") Expected<Response<UserDto>> expected
+            @Given("/mockmvc/get_user_response.json") Assertion<Response<UserDto>> assertion
     ) {
         final Response<UserDto> response = request.execute(1, "Test User");
-        expected.assertEquals(response);
+        assertion.assertAsExpected(response);
     }
 
     @Test
     void should_get_user_by_id(
             @GET("/users/1?name=Test User") @Headers("locale: UA") Response<UserDto> response,
-            @Verify("/mockmvc/get_user_response.json") Expected<Response<UserDto>> expected
+            @Given("/mockmvc/get_user_response.json") Assertion<Response<UserDto>> assertion
     ) {
-        expected.assertEquals(response);
+        assertion.assertAsExpected(response);
     }
 
     @Test
     void should_get_user_by_id(
             @GET("/users/1?name=Test User") @Headers("locale: UA") UserDto user,
-            @Verify("/mockmvc/user.json") Expected<UserDto> expected
+            @Given("/mockmvc/user.json") Assertion<UserDto> assertion
     ) {
-        expected.assertEquals(user);
+        assertion.assertAsExpected(user);
     }
 
     @Test
     void should_get_all_users(
             @GET("/users") Request<Page<UserDto>> request,
-            @Verify("/mockmvc/get_all_users_response.json") Expected<Response<Page<UserDto>>> expected
+            @Given("/mockmvc/get_all_users_response.json") Assertion<Response<Page<UserDto>>> assertion
     ) {
         final Response<Page<UserDto>> response = request.execute();
-        expected.assertEquals(response);
+        assertion.assertAsExpected(response);
     }
 
     @Test
     void should_get_all_users(
             @GET("/users") Response<Page<UserDto>> response,
-            @Verify("/mockmvc/get_all_users_response.json") Expected<Response<Page<UserDto>>> expected
+            @Given("/mockmvc/get_all_users_response.json") Assertion<Response<Page<UserDto>>> assertion
     ) {
-        expected.assertEquals(response);
+        assertion.assertAsExpected(response);
     }
 
     @Test
     void should_get_all_users(
             @GET("/users") Page<UserDto> users,
-            @Verify("/mockmvc/users.json") Expected<Page<UserDto>> expected
+            @Given("/mockmvc/users.json") Assertion<Page<UserDto>> assertion
     ) {
-        expected.assertEquals(users);
+        assertion.assertAsExpected(users);
     }
 
     @Test
     void should_create_user(
             @Given("/mockmvc/new_user.json") UserDto user,
             @POST("/users") Request<UserDto> request,
-            @Verify("/mockmvc/create_user_response.json") Expected<Response<UserDto>> expected
+            @Given("/mockmvc/create_user_response.json") Assertion<Response<UserDto>> assertion
     ) {
         final Response<UserDto> response = request.withBody(user).execute();
-        expected.assertEquals(response);
+        assertion.assertAsExpected(response);
     }
 
     @Test
     void should_create_user(
             @POST("/users") @Body("/mockmvc/new_user.json") Request<UserDto> request,
-            @Verify("/mockmvc/create_user_response.json") Expected<Response<UserDto>> expected
+            @Given("/mockmvc/create_user_response.json") Assertion<Response<UserDto>> assertion
     ) {
         final Response<UserDto> response = request.execute();
-        expected.assertEquals(response);
+        assertion.assertAsExpected(response);
     }
 
     @Test
     void should_create_user(
             @POST("/users") @Body("/mockmvc/new_user.json") Response<UserDto> response,
-            @Verify("/mockmvc/create_user_response.json") Expected<Response<UserDto>> expected
+            @Given("/mockmvc/create_user_response.json") Assertion<Response<UserDto>> assertion
     ) {
-        expected.assertEquals(response);
+        assertion.assertAsExpected(response);
     }
 
     @Test
     void should_create_user(
             @POST("/users") @Body("/mockmvc/new_user.json") UserDto user,
-            @Verify("/mockmvc/user.json") Expected<UserDto> expected
+            @Given("/mockmvc/user.json") Assertion<UserDto> assertion
     ) {
-        expected.assertEquals(user);
+        assertion.assertAsExpected(user);
     }
 
     @Test
     void should_delete_user_by_id(
             @DELETE("/users/{id}") Request<Void> request,
-            @Verify("/mockmvc/delete_user_response.json") Expected<Response<Void>> expected
+            @Given("/mockmvc/delete_user_response.json") Assertion<Response<Void>> assertion
     ) {
         final Response<Void> response = request.execute(1);
-        expected.assertEquals(response);
+        assertion.assertAsExpected(response);
     }
 
     @Test
     void should_delete_user_by_id(
             @DELETE("/users/1") Response<Void> response,
-            @Verify("/mockmvc/delete_user_response.json") Expected<Response<Void>> expected
+            @Given("/mockmvc/delete_user_response.json") Assertion<Response<Void>> assertion
     ) {
-        expected.assertEquals(response);
+        assertion.assertAsExpected(response);
     }
 
     @Test
     void should_update_user(
             @PUT("/users") @Body("/mockmvc/user.json") UserDto user,
-            @Verify("/mockmvc/updated_user.json") Expected<UserDto> expected
+            @Given("/mockmvc/updated_user.json") Assertion<UserDto> assertion
     ) {
-        expected.assertEquals(user);
+        assertion.assertAsExpected(user);
     }
 
     @Test
     void should_patch_user(
             @PATCH("/users/1") @Body("/mockmvc/user.json") UserDto user,
-            @Verify("/mockmvc/updated_user.json") Expected<UserDto> expected
+            @Given("/mockmvc/updated_user.json") Assertion<UserDto> assertion
     ) {
-        expected.assertEquals(user);
+        assertion.assertAsExpected(user);
     }
 }

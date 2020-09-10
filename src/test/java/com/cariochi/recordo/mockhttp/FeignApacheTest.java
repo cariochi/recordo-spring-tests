@@ -1,9 +1,9 @@
 package com.cariochi.recordo.mockhttp;
 
 import com.cariochi.recordo.*;
+import com.cariochi.recordo.given.Assertion;
 import com.cariochi.recordo.mockhttp.dto.Gist;
 import com.cariochi.recordo.mockhttp.dto.GistResponse;
-import com.cariochi.recordo.verify.Expected;
 import feign.Client;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.client.HttpClient;
@@ -38,21 +38,21 @@ class FeignApacheTest {
     @Test
     @MockHttp("/mockhttp/feign-apache/should_retrieve_gists.rest.json")
     void should_retrieve_gists(
-            @Verify("/mockhttp/gists.json") Expected<List<GistResponse>> expected
+            @Given("/mockhttp/gists.json") Assertion<List<GistResponse>> assertion
     ) {
-        expected.assertEquals(gitHub.getGists());
+        assertion.assertAsExpected(gitHub.getGists());
     }
 
     @Test
     @MockHttp("/mockhttp/feign-apache/should_create_gist.rest.json")
     void should_create_gist(
             @Given("/mockhttp/gist.json") Gist gist,
-            @Verify("/mockhttp/gist.json") Expected<Gist> expected
+            @Given("/mockhttp/gist.json") Assertion<Gist> assertion
     ) {
         GistResponse response = gitHub.createGist(gist);
         final Gist created = gitHub.getGist(response.getId(), "hello world");
         gitHub.deleteGist(response.getId());
-        expected.assertEquals(created);
+        assertion.assertAsExpected(created);
     }
 
     @Configuration

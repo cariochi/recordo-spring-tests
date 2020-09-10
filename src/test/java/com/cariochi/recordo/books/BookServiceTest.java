@@ -2,10 +2,9 @@ package com.cariochi.recordo.books;
 
 import com.cariochi.recordo.Given;
 import com.cariochi.recordo.RecordoExtension;
-import com.cariochi.recordo.Verify;
 import com.cariochi.recordo.books.dto.Author;
 import com.cariochi.recordo.books.dto.Book;
-import com.cariochi.recordo.verify.Expected;
+import com.cariochi.recordo.given.Assertion;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -29,40 +28,41 @@ class BookServiceTest {
 
     @Test
     void should_get_book_by_id(
-            @Verify("/books/book.json") Expected<Book> expected
+            @Given("/books/book.json") Assertion<Book> assertion
     ) {
         final Book actual = bookService.findById(1L);
-        expected.assertEquals(actual);
+        assertion.assertAsExpected(actual);
     }
 
     @Test
     void should_get_books_by_author(
             @Given("/books/author.json") Author author,
-            @Verify(
-                    value = "/books/short_books.json",
-                    included = {"content.id", "content.title", "content.author.id"}
-            ) Expected<Page<Book>> expected
+            @Given("/books/short_books.json") Assertion<Page<Book>> assertion
     ) {
-        expected.assertEquals(bookService.findAllByAuthor(author));
+        assertion
+                .included("content.id", "content.title", "content.author.id")
+                .assertAsExpected(bookService.findAllByAuthor(author));
     }
 
     @Test
     void should_create_book(
             @Given("/books/new_book.json") Book book,
             @Given("/books/author.json") Author author,
-            @Verify(value = "/books/created_book.json", excluded = "id") Expected<Book> expected
+            @Given("/books/created_book.json") Assertion<Book> assertion
     ) {
         when(authorService.findById(book.getAuthor().getId())).thenReturn(author);
-        expected.assertEquals(bookService.create(book));
+        assertion
+                .excluded("id")
+                .assertAsExpected(bookService.create(book));
     }
 
     @Test
     void should_add_book_to_shelf(
             @Given("/books/book.json") Book book,
             @Given("/books/books.json") List<Book> books,
-            @Verify("/books/expected_books.json") Expected<Page<Book>> expected
+            @Given("/books/expected_books.json") Assertion<Page<Book>> assertion
     ) {
-        expected.assertEquals(bookService.merge(books, book));
+        assertion.assertAsExpected(bookService.merge(books, book));
     }
 }
 

@@ -1,10 +1,10 @@
 package com.cariochi.recordo.mockhttp;
 
 import com.cariochi.recordo.*;
+import com.cariochi.recordo.given.Assertion;
 import com.cariochi.recordo.mockhttp.dto.Gist;
 import com.cariochi.recordo.mockhttp.dto.GistResponse;
 import com.cariochi.recordo.mockhttp.resttemplate.GitHubRestTemplate;
-import com.cariochi.recordo.verify.Expected;
 import okhttp3.OkHttpClient;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -35,24 +35,24 @@ public class RestTemplateOkHttpTest {
     @Test
     @MockHttp("/mockhttp/rest-template-ok-http/should_retrieve_gists.rest.json")
     void should_retrieve_gists(
-            @Verify("/mockhttp/gists.json") Expected<List<GistResponse>> expected
+            @Given("/mockhttp/gists.json") Assertion<List<GistResponse>> assertion
     ) {
-        expected.assertEquals(gitHub.getGists());
+        assertion.assertAsExpected(gitHub.getGists());
     }
 
     @Test
     @MockHttp("/mockhttp/rest-template-ok-http/should_create_gist.rest.json")
     void should_create_gist(
             @Given("/mockhttp/gist.json") Gist gist,
-            @Verify("/mockhttp/rest-template-ok-http/gist_response.json") Expected<GistResponse> expectedResponse,
-            @Verify("/mockhttp/gist.json") Expected<Gist> expectedGist
+            @Given("/mockhttp/rest-template-ok-http/gist_response.json") Assertion<GistResponse> responseAssertion,
+            @Given("/mockhttp/gist.json") Assertion<Gist> gistAssertion
     ) {
         GistResponse response = gitHub.createGist(gist);
         final GistResponse updateResponse = gitHub.updateGist(response.getId(), gist);
         final Gist createdGist = gitHub.getGist(response.getId(), "hello world");
         gitHub.deleteGist(response.getId());
-        expectedResponse.assertEquals(updateResponse);
-        expectedGist.assertEquals(createdGist);
+        responseAssertion.assertAsExpected(updateResponse);
+        gistAssertion.assertAsExpected(createdGist);
     }
 
     @Configuration

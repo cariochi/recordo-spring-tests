@@ -1,9 +1,9 @@
 package com.cariochi.recordo.mockhttp;
 
 import com.cariochi.recordo.*;
+import com.cariochi.recordo.given.Assertion;
 import com.cariochi.recordo.mockhttp.dto.Gist;
 import com.cariochi.recordo.mockhttp.dto.GistResponse;
-import com.cariochi.recordo.verify.Expected;
 import feign.Client;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.OkHttpClient;
@@ -36,17 +36,17 @@ class FeignOkHttpTest {
     @Test
     @MockHttp("/mockhttp/feign-ok-http/should_retrieve_gists.rest.json")
     void should_retrieve_gists(
-            @Verify("/mockhttp/gists.json") Expected<List<GistResponse>> expected
+            @Given("/mockhttp/gists.json") Assertion<List<GistResponse>> assertion
     ) {
-        expected.assertEquals(gitHub.getGists());
+        assertion.assertAsExpected(gitHub.getGists());
     }
 
     @Test
     void should_create_gist(
             @Given("/mockhttp/gist.json") Gist gist,
             @MockHttp("/mockhttp/feign-ok-http/should_create_gist.http.json") MockHttpServer mockHttpServer,
-            @Verify("/mockhttp/feign-ok-http/gist_response.json") Expected<GistResponse> expectedResponse,
-            @Verify("/mockhttp/gist.json") Expected<Gist> expectedGist
+            @Given("/mockhttp/feign-ok-http/gist_response.json") Assertion<GistResponse> responseAssertion,
+            @Given("/mockhttp/gist.json") Assertion<Gist> gistAssertion
     ) {
         try (final MockHttpContext context = mockHttpServer.run()) {
 
@@ -57,8 +57,8 @@ class FeignOkHttpTest {
             final Gist createdGist = gitHub.getGist(response.getId(), "hello world");
             gitHub.deleteGist(response.getId());
 
-            expectedResponse.assertEquals(updateResponse);
-            expectedGist.assertEquals(createdGist);
+            responseAssertion.assertAsExpected(updateResponse);
+            gistAssertion.assertAsExpected(createdGist);
         }
     }
 
