@@ -1,34 +1,37 @@
 {
-  "content" : [ {
-    "id" : 1,
-    "name" : "user_1"
-  }, {
-    "id" : 2,
-    "name" : "user_2"
-  } ],
-  "empty" : false,
-  "first" : true,
-  "last" : true,
-  "number" : 0,
-  "numberOfElements" : 2,
-  "pageable" : {
-    "offset" : 0,
-    "pageNumber" : 0,
-    "pageSize" : 2,
-    "paged" : true,
-    "sort" : {
-      "empty" : true,
-      "sorted" : false,
-      "unsorted" : true
+  "content": [
+    {
+      "id": 1,
+      "name": "user_1"
     },
-    "unpaged" : false
+    {
+      "id": 2,
+      "name": "user_2"
+    }
+  ],
+  "pageable": {
+    "sort": {
+      "sorted": false,
+      "unsorted": true,
+      "empty": true
+    },
+    "pageNumber": 0,
+    "pageSize": 20,
+    "offset": 0,
+    "paged": true,
+    "unpaged": false
   },
-  "size" : 2,
-  "sort" : {
-    "empty" : true,
-    "sorted" : false,
-    "unsorted" : true
+  "totalPages": 1,
+  "totalElements": 2,
+  "last": true,
+  "first": true,
+  "numberOfElements": 2,
+  "size": 20,
+  "number": 0,
+  "sort": {
+    "sorted": false,
+    "unsorted": true,
+    "empty": true
   },
-  "totalElements" : 2,
-  "totalPages" : 1
+  "empty": false
 }

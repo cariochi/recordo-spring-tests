@@ -1,40 +1,43 @@
 {
-  "body" : {
-    "content" : [ {
-      "id" : 1,
-      "name" : "user_1"
-    }, {
-      "id" : 2,
-      "name" : "user_2"
-    } ],
-    "empty" : false,
-    "first" : true,
-    "last" : true,
-    "number" : 0,
-    "numberOfElements" : 2,
-    "pageable" : {
-      "offset" : 0,
-      "pageNumber" : 0,
-      "pageSize" : 2,
-      "paged" : true,
-      "sort" : {
-        "empty" : true,
-        "sorted" : false,
-        "unsorted" : true
+  "status": "OK",
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "body": {
+    "content": [
+      {
+        "id": 1,
+        "name": "user_1"
       },
-      "unpaged" : false
+      {
+        "id": 2,
+        "name": "user_2"
+      }
+    ],
+    "pageable": {
+      "sort": {
+        "unsorted": true,
+        "sorted": false,
+        "empty": true
+      },
+      "pageNumber": 0,
+      "pageSize": 20,
+      "offset": 0,
+      "paged": true,
+      "unpaged": false
     },
-    "size" : 2,
-    "sort" : {
-      "empty" : true,
-      "sorted" : false,
-      "unsorted" : true
+    "last": true,
+    "totalPages": 1,
+    "totalElements": 2,
+    "numberOfElements": 2,
+    "first": true,
+    "size": 20,
+    "number": 0,
+    "sort": {
+      "unsorted": true,
+      "sorted": false,
+      "empty": true
     },
-    "totalElements" : 2,
-    "totalPages" : 1
-  },
-  "headers" : {
-    "Content-Type" : "application/json"
-  },
-  "statusCode" : 200
+    "empty": false
+  }
 }

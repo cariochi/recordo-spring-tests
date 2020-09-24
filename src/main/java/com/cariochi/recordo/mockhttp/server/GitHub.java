@@ -1,7 +1,7 @@
-package com.cariochi.recordo.mockhttp;
+package com.cariochi.recordo.mockhttp.server;
 
-import com.cariochi.recordo.mockhttp.dto.Gist;
-import com.cariochi.recordo.mockhttp.dto.GistResponse;
+import com.cariochi.recordo.mockhttp.server.dto.Gist;
+import com.cariochi.recordo.mockhttp.server.dto.GistResponse;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 

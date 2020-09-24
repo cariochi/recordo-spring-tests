@@ -1,4 +1,4 @@
-package com.cariochi.recordo.mockhttp.dto;
+package com.cariochi.recordo.mockhttp.server.dto;
 
 import lombok.*;
 

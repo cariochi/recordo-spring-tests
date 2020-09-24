@@ -1,5 +1,5 @@
 {
-  "statusCode" : 200,
-  "headers" : { },
-  "body" : null
+  "status": "OK",
+  "headers": {},
+  "body": null
 }

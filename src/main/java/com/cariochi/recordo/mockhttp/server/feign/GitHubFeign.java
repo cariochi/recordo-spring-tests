@@ -1,8 +1,8 @@
-package com.cariochi.recordo.mockhttp.feign;
+package com.cariochi.recordo.mockhttp.server.feign;
 
-import com.cariochi.recordo.mockhttp.GitHub;
-import com.cariochi.recordo.mockhttp.dto.Gist;
-import com.cariochi.recordo.mockhttp.dto.GistResponse;
+import com.cariochi.recordo.mockhttp.server.GitHub;
+import com.cariochi.recordo.mockhttp.server.dto.Gist;
+import com.cariochi.recordo.mockhttp.server.dto.GistResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

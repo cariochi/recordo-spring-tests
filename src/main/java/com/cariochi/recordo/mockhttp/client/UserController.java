@@ -1,14 +1,17 @@
-package com.cariochi.recordo.mockmvc;
+package com.cariochi.recordo.mockhttp.client;
 
-import com.cariochi.recordo.mockmvc.dto.UserDto;
+import com.cariochi.recordo.mockhttp.client.dto.UserDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.IntStream;
 
-import static java.util.Arrays.asList;
+import static java.util.stream.Collectors.toList;
 
 @Slf4j
 @RestController
@@ -46,11 +49,11 @@ public class UserController {
     }
 
     @GetMapping
-    public Page<UserDto> findAll() {
-        return new PageImpl<>(asList(
-                UserDto.builder().id(1).name("user_" + 1).build(),
-                UserDto.builder().id(2).name("user_" + 2).build()
-        ));
+    public Page<UserDto> findAll(@RequestParam(required = false, defaultValue = "2") int count, Pageable pageable) {
+        final List<UserDto> users = IntStream.range(1, count + 1)
+                .mapToObj(i -> UserDto.builder().id(i).name("user_" + i).build())
+                .collect(toList());
+        return count == 0 ? Page.empty() : new PageImpl<>(users, pageable, users.size());
     }
 
     @DeleteMapping("/{id}")

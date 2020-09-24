@@ -1,8 +1,8 @@
-package com.cariochi.recordo.mockhttp.resttemplate;
+package com.cariochi.recordo.mockhttp.server.resttemplate;
 
-import com.cariochi.recordo.mockhttp.GitHub;
-import com.cariochi.recordo.mockhttp.dto.Gist;
-import com.cariochi.recordo.mockhttp.dto.GistResponse;
+import com.cariochi.recordo.mockhttp.server.GitHub;
+import com.cariochi.recordo.mockhttp.server.dto.Gist;
+import com.cariochi.recordo.mockhttp.server.dto.GistResponse;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.web.client.RestTemplate;

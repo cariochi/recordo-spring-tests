@@ -1,9 +1,12 @@
-package com.cariochi.recordo.mockhttp;
+package com.cariochi.recordo.mockhttp.server;
 
-import com.cariochi.recordo.*;
+import com.cariochi.recordo.EnableRecordo;
+import com.cariochi.recordo.Given;
+import com.cariochi.recordo.RecordoExtension;
+import com.cariochi.recordo.RecordoTestsApplication;
 import com.cariochi.recordo.given.Assertion;
-import com.cariochi.recordo.mockhttp.dto.Gist;
-import com.cariochi.recordo.mockhttp.dto.GistResponse;
+import com.cariochi.recordo.mockhttp.server.dto.Gist;
+import com.cariochi.recordo.mockhttp.server.dto.GistResponse;
 import feign.Client;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.OkHttpClient;
@@ -34,7 +37,7 @@ class FeignOkHttpTest {
     protected GitHub gitHub;
 
     @Test
-    @MockHttp("/mockhttp/feign-ok-http/should_retrieve_gists.rest.json")
+    @com.cariochi.recordo.MockHttpServer("/mockhttp/feign-ok-http/should_retrieve_gists.rest.json")
     void should_retrieve_gists(
             @Given("/mockhttp/gists.json") Assertion<List<GistResponse>> assertion
     ) {
@@ -44,7 +47,7 @@ class FeignOkHttpTest {
     @Test
     void should_create_gist(
             @Given("/mockhttp/gist.json") Gist gist,
-            @MockHttp("/mockhttp/feign-ok-http/should_create_gist.http.json") MockHttpServer mockHttpServer,
+            @com.cariochi.recordo.MockHttpServer("/mockhttp/feign-ok-http/should_create_gist.http.json") MockHttpServer mockHttpServer,
             @Given("/mockhttp/feign-ok-http/gist_response.json") Assertion<GistResponse> responseAssertion,
             @Given("/mockhttp/gist.json") Assertion<Gist> gistAssertion
     ) {

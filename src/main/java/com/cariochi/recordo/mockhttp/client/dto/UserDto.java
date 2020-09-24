@@ -1,4 +1,4 @@
-package com.cariochi.recordo.mockmvc.dto;
+package com.cariochi.recordo.mockhttp.client.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

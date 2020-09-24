@@ -1,9 +1,10 @@
-package com.cariochi.recordo.mockhttp;
+package com.cariochi.recordo.mockhttp.server;
 
+import com.cariochi.recordo.MockHttpServer;
 import com.cariochi.recordo.*;
 import com.cariochi.recordo.given.Assertion;
-import com.cariochi.recordo.mockhttp.dto.Gist;
-import com.cariochi.recordo.mockhttp.dto.GistResponse;
+import com.cariochi.recordo.mockhttp.server.dto.Gist;
+import com.cariochi.recordo.mockhttp.server.dto.GistResponse;
 import feign.Client;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.client.HttpClient;
@@ -36,7 +37,7 @@ class FeignApacheTest {
     protected GitHub gitHub;
 
     @Test
-    @MockHttp("/mockhttp/feign-apache/should_retrieve_gists.rest.json")
+    @MockHttpServer("/mockhttp/feign-apache/should_retrieve_gists.rest.json")
     void should_retrieve_gists(
             @Given("/mockhttp/gists.json") Assertion<List<GistResponse>> assertion
     ) {
@@ -44,7 +45,7 @@ class FeignApacheTest {
     }
 
     @Test
-    @MockHttp("/mockhttp/feign-apache/should_create_gist.rest.json")
+    @MockHttpServer("/mockhttp/feign-apache/should_create_gist.rest.json")
     void should_create_gist(
             @Given("/mockhttp/gist.json") Gist gist,
             @Given("/mockhttp/gist.json") Assertion<Gist> assertion

@@ -1,10 +1,11 @@
-package com.cariochi.recordo.mockhttp;
+package com.cariochi.recordo.mockhttp.server;
 
+import com.cariochi.recordo.MockHttpServer;
 import com.cariochi.recordo.*;
 import com.cariochi.recordo.given.Assertion;
-import com.cariochi.recordo.mockhttp.dto.Gist;
-import com.cariochi.recordo.mockhttp.dto.GistResponse;
-import com.cariochi.recordo.mockhttp.resttemplate.GitHubRestTemplate;
+import com.cariochi.recordo.mockhttp.server.dto.Gist;
+import com.cariochi.recordo.mockhttp.server.dto.GistResponse;
+import com.cariochi.recordo.mockhttp.server.resttemplate.GitHubRestTemplate;
 import org.apache.http.client.HttpClient;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
@@ -35,7 +36,7 @@ public class RestTemplateApacheTest {
     protected GitHub gitHub;
 
     @Test
-    @MockHttp("/mockhttp/rest-template-ok-apache/should_retrieve_gists.rest.json")
+    @MockHttpServer("/mockhttp/rest-template-ok-apache/should_retrieve_gists.rest.json")
     void should_retrieve_gists(
             @Given("/mockhttp/gists.json") Assertion<List<GistResponse>> assertion
     ) {
@@ -43,7 +44,7 @@ public class RestTemplateApacheTest {
     }
 
     @Test
-    @MockHttp("/mockhttp/rest-template-ok-apache/should_create_gist.rest.json")
+    @MockHttpServer("/mockhttp/rest-template-ok-apache/should_create_gist.rest.json")
     void should_create_gist(
             @Given("/mockhttp/gist.json") Gist gist,
             @Given("/mockhttp/gist.json") Assertion<Gist> assertion

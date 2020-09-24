@@ -1,27 +1,25 @@
 {
-  "content" : [ {
-    "id" : 1,
-    "author" : {
-      "id" : 1,
-      "firstName" : "William",
-      "lastName" : "Shakespeare"
+  "content": [
+    {
+      "id": 1,
+      "author": {
+        "id": 1
+      },
+      "title": "Othello"
     },
-    "title" : "Othello"
-  }, {
-    "id" : 2,
-    "author" : {
-      "id" : 1,
-      "firstName" : "William",
-      "lastName" : "Shakespeare"
+    {
+      "id": 2,
+      "author": {
+        "id": 1
+      },
+      "title": "Macbeth"
     },
-    "title" : "Macbeth"
-  }, {
-    "id" : 3,
-    "author" : {
-      "id" : 1,
-      "firstName" : "William",
-      "lastName" : "Shakespeare"
-    },
-    "title" : "Richard II"
-  } ]
+    {
+      "id": 3,
+      "author": {
+        "id": 1
+      },
+      "title": "Richard II"
+    }
+  ]
 }

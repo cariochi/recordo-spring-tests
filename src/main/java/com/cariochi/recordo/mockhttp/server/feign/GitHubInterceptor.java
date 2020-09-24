@@ -1,4 +1,4 @@
-package com.cariochi.recordo.mockhttp.feign;
+package com.cariochi.recordo.mockhttp.server.feign;
 
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
