@@ -37,8 +37,9 @@ class MockHttpClientTest {
             MockHttpClient http,
             @Given("/mockmvc/get_user_response.json") Assertion<Response<UserDto>> assertion
     ) {
-        final Response<UserDto> response = http.get("/users/{id}?name={name}", UserDto.class)
-                .parameters(1, "Test User")
+        final Response<UserDto> response = http.get("/users/{id}", UserDto.class)
+                .uriVars(1)
+                .param("name", "Test User")
                 .header("locale", "UA")
                 .expectedStatus(OK)
                 .execute();
@@ -155,7 +156,7 @@ class MockHttpClientTest {
             MockHttpClient http,
             @Given("/mockmvc/delete_user_response.json") Assertion<Response<Void>> assertion
     ) {
-        final Response<Void> response = http.delete("/users/{id}").parameters(1).execute();
+        final Response<Void> response = http.delete("/users/{id}").uriVars(1).execute();
         assertion.assertAsExpected(response);
     }
 
@@ -164,7 +165,7 @@ class MockHttpClientTest {
             @MockHttpDelete("/users/{id}") Request<Void> request,
             @Given("/mockmvc/delete_user_response.json") Assertion<Response<Void>> assertion
     ) {
-        final Response<Void> response = request.parameters(1).execute();
+        final Response<Void> response = request.uriVars(1).execute();
         assertion.assertAsExpected(response);
     }
 

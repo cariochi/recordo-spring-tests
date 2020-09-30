@@ -1,0 +1,7 @@
+{
+  "status": "NOT_FOUND",
+  "headers": {
+    "Vary": "Origin, Access-Control-Request-Method, Access-Control-Request-Headers"
+  },
+  "body": null
+}
