@@ -1,8 +1,6 @@
 package com.cariochi.recordo.mockhttp.server;
 
-import com.cariochi.recordo.MockHttpServer;
 import com.cariochi.recordo.*;
-import com.cariochi.recordo.given.Assertion;
 import com.cariochi.recordo.mockhttp.server.dto.Gist;
 import com.cariochi.recordo.mockhttp.server.dto.GistResponse;
 import com.cariochi.recordo.mockhttp.server.resttemplate.GitHubRestTemplate;
@@ -19,6 +17,8 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
+import static com.cariochi.recordo.assertions.RecordoAssertion.assertAsJson;
+
 @SpringBootTest(
         classes = {RecordoTestsApplication.class, RestTemplateOkHttpTest.Config.class},
         properties = "resttemplate.okhttp.enabled=true"
@@ -34,26 +34,28 @@ public class RestTemplateOkHttpTest {
     protected GitHub gitHub;
 
     @Test
-    @MockHttpServer("/mockhttp/rest-template-ok-http/should_retrieve_gists.rest.json")
-    void should_retrieve_gists(
-            @Given("/mockhttp/gists.json") Assertion<List<GistResponse>> assertion
-    ) {
-        assertion.assertAsExpected(gitHub.getGists());
+    @WithMockHttpServer("/mockhttp/rest-template-ok-http/should_retrieve_gists.rest.json")
+    void should_retrieve_gists() {
+        final List<GistResponse> gists = gitHub.getGists();
+        assertAsJson(gists)
+                .isEqualTo("/mockhttp/gists.json");
     }
 
     @Test
-    @MockHttpServer("/mockhttp/rest-template-ok-http/should_create_gist.rest.json")
+    @WithMockHttpServer("/mockhttp/rest-template-ok-http/should_create_gist.rest.json")
     void should_create_gist(
-            @Given("/mockhttp/gist.json") Gist gist,
-            @Given("/mockhttp/rest-template-ok-http/gist_response.json") Assertion<GistResponse> responseAssertion,
-            @Given("/mockhttp/gist.json") Assertion<Gist> gistAssertion
+            @Read("/mockhttp/gist.json") Gist gist
     ) {
-        GistResponse response = gitHub.createGist(gist);
+        final GistResponse response = gitHub.createGist(gist);
         final GistResponse updateResponse = gitHub.updateGist(response.getId(), gist);
         final Gist createdGist = gitHub.getGist(response.getId(), "hello world");
         gitHub.deleteGist(response.getId());
-        responseAssertion.assertAsExpected(updateResponse);
-        gistAssertion.assertAsExpected(createdGist);
+
+        assertAsJson(updateResponse)
+                .isEqualTo("/mockhttp/rest-template-ok-http/gist_response.json");
+
+        assertAsJson(createdGist)
+                .isEqualTo("/mockhttp/gist.json");
     }
 
     @Configuration
@@ -66,13 +68,13 @@ public class RestTemplateOkHttpTest {
         }
 
         @Bean
-        public RestTemplate restTemplate() {
-            return new RestTemplate(new OkHttp3ClientHttpRequestFactory(client()));
+        public RestTemplate restTemplate(OkHttpClient client) {
+            return new RestTemplate(new OkHttp3ClientHttpRequestFactory(client));
         }
 
         @Bean
-        public GitHub gitHub() {
-            return new GitHubRestTemplate(restTemplate());
+        public GitHub gitHub(RestTemplate restTemplate) {
+            return new GitHubRestTemplate(restTemplate);
         }
     }
 

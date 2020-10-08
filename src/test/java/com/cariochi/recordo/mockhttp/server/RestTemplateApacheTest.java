@@ -1,8 +1,6 @@
 package com.cariochi.recordo.mockhttp.server;
 
-import com.cariochi.recordo.MockHttpServer;
 import com.cariochi.recordo.*;
-import com.cariochi.recordo.given.Assertion;
 import com.cariochi.recordo.mockhttp.server.dto.Gist;
 import com.cariochi.recordo.mockhttp.server.dto.GistResponse;
 import com.cariochi.recordo.mockhttp.server.resttemplate.GitHubRestTemplate;
@@ -21,6 +19,8 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
+import static com.cariochi.recordo.assertions.RecordoAssertion.assertAsJson;
+
 @SpringBootTest(
         classes = {RecordoTestsApplication.class, RestTemplateApacheTest.Config.class},
         properties = "resttemplate.httpclient.enabled=true"
@@ -36,23 +36,24 @@ public class RestTemplateApacheTest {
     protected GitHub gitHub;
 
     @Test
-    @MockHttpServer("/mockhttp/rest-template-ok-apache/should_retrieve_gists.rest.json")
-    void should_retrieve_gists(
-            @Given("/mockhttp/gists.json") Assertion<List<GistResponse>> assertion
-    ) {
-        assertion.assertAsExpected(gitHub.getGists());
+    @WithMockHttpServer("/mockhttp/rest-template-ok-apache/should_retrieve_gists.rest.json")
+    void should_retrieve_gists() {
+        final List<GistResponse> gists = gitHub.getGists();
+        assertAsJson(gists)
+                .isEqualTo("/mockhttp/gists.json");
     }
 
     @Test
-    @MockHttpServer("/mockhttp/rest-template-ok-apache/should_create_gist.rest.json")
+    @WithMockHttpServer("/mockhttp/rest-template-ok-apache/should_create_gist.rest.json")
     void should_create_gist(
-            @Given("/mockhttp/gist.json") Gist gist,
-            @Given("/mockhttp/gist.json") Assertion<Gist> assertion
+            @Read("/mockhttp/gist.json") Gist gist
     ) {
-        GistResponse response = gitHub.createGist(gist);
+        final GistResponse response = gitHub.createGist(gist);
         final Gist created = gitHub.getGist(response.getId(), "hello world");
         gitHub.deleteGist(response.getId());
-        assertion.assertAsExpected(created);
+
+        assertAsJson(created)
+                .isEqualTo("/mockhttp/gist.json");
     }
 
     @Configuration
@@ -65,13 +66,13 @@ public class RestTemplateApacheTest {
         }
 
         @Bean
-        public RestTemplate restTemplate() {
-            return new RestTemplate(new HttpComponentsClientHttpRequestFactory(httpClient()));
+        public RestTemplate restTemplate(HttpClient httpClient) {
+            return new RestTemplate(new HttpComponentsClientHttpRequestFactory(httpClient));
         }
 
         @Bean
-        public GitHub gitHub() {
-            return new GitHubRestTemplate(restTemplate());
+        public GitHub gitHub(RestTemplate restTemplate) {
+            return new GitHubRestTemplate(restTemplate);
         }
 
     }

@@ -1,10 +1,9 @@
 package com.cariochi.recordo.books;
 
-import com.cariochi.recordo.Given;
+import com.cariochi.recordo.Read;
 import com.cariochi.recordo.RecordoExtension;
 import com.cariochi.recordo.books.dto.Author;
 import com.cariochi.recordo.books.dto.Book;
-import com.cariochi.recordo.given.Assertion;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -14,6 +13,9 @@ import org.springframework.data.domain.Page;
 
 import java.util.List;
 
+import static com.cariochi.recordo.assertions.RecordoAssertion.assertAsJson;
+import static com.cariochi.recordo.assertions.RecordoCondition.equalAsJsonTo;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -27,42 +29,55 @@ class BookServiceTest {
     private BookService bookService;
 
     @Test
-    void should_get_book_by_id(
-            @Given("/books/book.json") Assertion<Book> assertion
-    ) {
+    void should_get_book_by_id() {
         final Book actual = bookService.findById(1L);
-        assertion.assertAsExpected(actual);
+        assertAsJson(actual).isEqualTo("/books/book.json");
+        assertThat(actual).is(equalAsJsonTo("/books/book.json"));
     }
 
     @Test
     void should_get_books_by_author(
-            @Given("/books/author.json") Author author,
-            @Given("/books/short_books.json") Assertion<Page<Book>> assertion
+            @Read("/books/author.json") Author author
     ) {
-        assertion
-                .included("content.id", "content.title", "content.author.id")
-                .assertAsExpected(bookService.findAllByAuthor(author));
+        final Page<Book> books = bookService.findAllByAuthor(author);
+
+        assertAsJson(books)
+                .including("content.id", "content.title", "content.author.id")
+                .isEqualTo("/books/short_books.json");
+
+        assertThat(books)
+                .is(equalAsJsonTo("/books/short_books.json")
+                        .including("content.id", "content.title", "content.author.id"));
+
+        assertThat(books).haveExactly(1, equalAsJsonTo("/books/book.json"));
     }
 
     @Test
     void should_create_book(
-            @Given("/books/new_book.json") Book book,
-            @Given("/books/author.json") Author author,
-            @Given("/books/created_book.json") Assertion<Book> assertion
+            @Read("/books/new_book.json") Book book,
+            @Read("/books/author.json") Author author
     ) {
         when(authorService.findById(book.getAuthor().getId())).thenReturn(author);
-        assertion
-                .excluded("id")
-                .assertAsExpected(bookService.create(book));
+        final Book created = bookService.create(book);
+
+        assertAsJson(created)
+                .excluding("id")
+                .isEqualTo("/books/created_book.json");
+
+        assertThat(created)
+                .is(equalAsJsonTo("/books/created_book.json").excluding("id"))
+                .extracting(Book::getId).isNotNull();
     }
 
     @Test
     void should_add_book_to_shelf(
-            @Given("/books/book.json") Book book,
-            @Given("/books/books.json") List<Book> books,
-            @Given("/books/expected_books.json") Assertion<Page<Book>> assertion
+            @Read("/books/book.json") Book book,
+            @Read("/books/books.json") List<Book> books
     ) {
-        assertion.assertAsExpected(bookService.merge(books, book));
+        final Page<Book> merged = bookService.merge(books, book);
+
+        assertAsJson(merged).isEqualTo("/books/expected_books.json");
+
+        assertThat(merged).haveExactly(1, equalAsJsonTo("/books/book.json"));
     }
 }
-

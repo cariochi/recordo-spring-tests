@@ -1,8 +1,6 @@
 package com.cariochi.recordo.mockhttp.server;
 
-import com.cariochi.recordo.MockHttpServer;
 import com.cariochi.recordo.*;
-import com.cariochi.recordo.given.Assertion;
 import com.cariochi.recordo.mockhttp.server.dto.Gist;
 import com.cariochi.recordo.mockhttp.server.dto.GistResponse;
 import feign.Client;
@@ -21,6 +19,8 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.List;
 
+import static com.cariochi.recordo.assertions.RecordoAssertion.assertAsJson;
+
 @Slf4j
 @SpringBootTest(
         classes = {RecordoTestsApplication.class, FeignApacheTest.Config.class},
@@ -37,23 +37,23 @@ class FeignApacheTest {
     protected GitHub gitHub;
 
     @Test
-    @MockHttpServer("/mockhttp/feign-apache/should_retrieve_gists.rest.json")
-    void should_retrieve_gists(
-            @Given("/mockhttp/gists.json") Assertion<List<GistResponse>> assertion
-    ) {
-        assertion.assertAsExpected(gitHub.getGists());
+    @WithMockHttpServer("/mockhttp/feign-apache/should_retrieve_gists.rest.json")
+    void should_retrieve_gists() {
+        final List<GistResponse> gists = gitHub.getGists();
+        assertAsJson(gists)
+                .isEqualTo("/mockhttp/gists.json");
     }
 
     @Test
-    @MockHttpServer("/mockhttp/feign-apache/should_create_gist.rest.json")
+    @WithMockHttpServer("/mockhttp/feign-apache/should_create_gist.rest.json")
     void should_create_gist(
-            @Given("/mockhttp/gist.json") Gist gist,
-            @Given("/mockhttp/gist.json") Assertion<Gist> assertion
+            @Read("/mockhttp/gist.json") Gist gist
     ) {
         GistResponse response = gitHub.createGist(gist);
         final Gist created = gitHub.getGist(response.getId(), "hello world");
         gitHub.deleteGist(response.getId());
-        assertion.assertAsExpected(created);
+        assertAsJson(created)
+                .isEqualTo("/mockhttp/gist.json");
     }
 
     @Configuration
@@ -67,8 +67,8 @@ class FeignApacheTest {
         }
 
         @Bean
-        public Client feignClient() {
-            return new feign.httpclient.ApacheHttpClient(httpClient());
+        public Client feignClient(HttpClient httpClient) {
+            return new feign.httpclient.ApacheHttpClient(httpClient);
         }
     }
 }

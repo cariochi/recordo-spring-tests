@@ -1,9 +1,8 @@
 package com.cariochi.recordo.mockhttp.client;
 
 import com.cariochi.recordo.EnableRecordo;
-import com.cariochi.recordo.Given;
+import com.cariochi.recordo.Read;
 import com.cariochi.recordo.RecordoExtension;
-import com.cariochi.recordo.given.Assertion;
 import com.cariochi.recordo.mockhttp.client.dto.UserDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,6 +14,7 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.data.domain.Page;
 import org.springframework.test.web.servlet.MockMvc;
 
+import static com.cariochi.recordo.assertions.RecordoAssertion.assertAsJson;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.http.HttpMethod.GET;
 import static org.springframework.http.HttpStatus.OK;
@@ -33,10 +33,7 @@ class MockHttpClientTest {
     private MockMvc mockMvc;
 
     @Test
-    void should_get_user_by_id_with_mock_http_client(
-            MockHttpClient http,
-            @Given("/mockmvc/get_user_response.json") Assertion<Response<UserDto>> assertion
-    ) {
+    void should_get_user_by_id_with_mock_http_client(MockHttpClient http) {
         final Response<UserDto> response = http.get("/users/{id}", UserDto.class)
                 .uriVars(1)
                 .param("name", "Test User")
@@ -44,7 +41,7 @@ class MockHttpClientTest {
                 .expectedStatus(OK)
                 .execute();
 
-        assertion.assertAsExpected(response);
+        assertAsJson(response).isEqualTo("/mockmvc/get_user_response.json");
     }
 
     @Test
@@ -53,60 +50,51 @@ class MockHttpClientTest {
                     method = GET,
                     path = "/users/1?name=Test User",
                     interceptors = LocaleInterceptor.class
-            ) Response<UserDto> response,
-            @Given("/mockmvc/get_user_response.json") Assertion<Response<UserDto>> assertion
+            ) Response<UserDto> response
     ) {
-        assertion.assertAsExpected(response);
+        assertAsJson(response).isEqualTo("/mockmvc/get_user_response.json");
     }
 
     @Test
     void should_get_user_by_id_with_mock_http_get(
-            @MockHttpGet(value = "/users/1?name=Test User", headers = "locale=UA", expectedStatus = OK) Response<UserDto> response,
-            @Given("/mockmvc/get_user_response.json") Assertion<Response<UserDto>> assertion
+            @MockHttpGet(value = "/users/1?name=Test User", headers = "locale=UA", expectedStatus = OK) Response<UserDto> response
     ) {
-        assertion.assertAsExpected(response);
+        assertAsJson(response).isEqualTo("/mockmvc/get_user_response.json");
     }
 
     @Test
     void should_get_user_by_id_with_mock_http_get(
-            @MockHttpGet(value = "/users/1?name=Test User", headers = "locale=UA") UserDto user,
-            @Given("/mockmvc/user.json") Assertion<UserDto> assertion
+            @MockHttpGet(value = "/users/1?name=Test User", headers = "locale=UA") UserDto user
     ) {
-        assertion.assertAsExpected(user);
+        assertAsJson(user).isEqualTo("/mockmvc/user.json");
     }
 
     @Test
-    void should_get_all_users_with_mock_http_client(
-            MockHttpClient http,
-            @Given("/mockmvc/get_all_users_response.json") Assertion<Response<Page<UserDto>>> assertion
-    ) {
+    void should_get_all_users_with_mock_http_client(MockHttpClient http) {
         final Response<Page<UserDto>> response = http.get("/users", USER_PAGE).execute();
-        assertion.assertAsExpected(response);
+        assertAsJson(response).isEqualTo("/mockmvc/get_all_users_response.json");
     }
 
     @Test
     void should_get_all_users(
-            @MockHttpGet("/users") Request<Page<UserDto>> request,
-            @Given("/mockmvc/get_all_users_response.json") Assertion<Response<Page<UserDto>>> assertion
+            @MockHttpGet("/users") Request<Page<UserDto>> request
     ) {
         final Response<Page<UserDto>> response = request.execute();
-        assertion.assertAsExpected(response);
+        assertAsJson(response).isEqualTo("/mockmvc/get_all_users_response.json");
     }
 
     @Test
     void should_get_all_users(
-            @MockHttpGet("/users") Response<Page<UserDto>> response,
-            @Given("/mockmvc/get_all_users_response.json") Assertion<Response<Page<UserDto>>> assertion
+            @MockHttpGet("/users") Response<Page<UserDto>> response
     ) {
-        assertion.assertAsExpected(response);
+        assertAsJson(response).isEqualTo("/mockmvc/get_all_users_response.json");
     }
 
     @Test
     void should_get_all_users(
-            @MockHttpGet("/users") Page<UserDto> users,
-            @Given("/mockmvc/users.json") Assertion<Page<UserDto>> assertion
+            @MockHttpGet("/users") Page<UserDto> users
     ) {
-        assertion.assertAsExpected(users);
+        assertAsJson(users).isEqualTo("/mockmvc/users.json");
     }
 
     @Test
@@ -119,78 +107,67 @@ class MockHttpClientTest {
     @Test
     void should_create_user(
             MockHttpClient http,
-            @Given("/mockmvc/new_user.json") UserDto user,
-            @Given("/mockmvc/create_user_response.json") Assertion<Response<UserDto>> assertion
+            @Read("/mockmvc/new_user.json") UserDto user
     ) {
         final Response<UserDto> response = http.post("/users", UserDto.class).body(user).execute();
-        assertion.assertAsExpected(response);
+        assertAsJson(response).isEqualTo("/mockmvc/create_user_response.json");
     }
 
     @Test
     void should_create_user(
-            @MockHttpPost(value = "/users", body = "/mockmvc/new_user.json") Request<UserDto> request,
-            @Given("/mockmvc/create_user_response.json") Assertion<Response<UserDto>> assertion
+            @MockHttpPost(value = "/users", body = "/mockmvc/new_user.json") Request<UserDto> request
     ) {
         final Response<UserDto> response = request.execute();
-        assertion.assertAsExpected(response);
+        assertAsJson(response).isEqualTo("/mockmvc/create_user_response.json");
     }
 
     @Test
     void should_create_user(
-            @MockHttpPost(value = "/users", body = "/mockmvc/new_user.json") Response<UserDto> response,
-            @Given("/mockmvc/create_user_response.json") Assertion<Response<UserDto>> assertion
+            @MockHttpPost(value = "/users", body = "/mockmvc/new_user.json") Response<UserDto> response
     ) {
-        assertion.assertAsExpected(response);
+        assertAsJson(response).isEqualTo("/mockmvc/create_user_response.json");
     }
 
     @Test
     void should_create_user(
-            @MockHttpPost(value = "/users", body = "/mockmvc/new_user.json") UserDto user,
-            @Given("/mockmvc/user.json") Assertion<UserDto> assertion
+            @MockHttpPost(value = "/users", body = "/mockmvc/new_user.json") UserDto user
     ) {
-        assertion.assertAsExpected(user);
+        assertAsJson(user).isEqualTo("/mockmvc/user.json");
     }
 
     @Test
-    void should_delete_user_by_id(
-            MockHttpClient http,
-            @Given("/mockmvc/delete_user_response.json") Assertion<Response<Void>> assertion
-    ) {
+    void should_delete_user_by_id(MockHttpClient http) {
         final Response<Void> response = http.delete("/users/{id}").uriVars(1).execute();
-        assertion.assertAsExpected(response);
+        assertAsJson(response).isEqualTo("/mockmvc/delete_user_response.json");
     }
 
     @Test
     void should_delete_user_by_id(
-            @MockHttpDelete("/users/{id}") Request<Void> request,
-            @Given("/mockmvc/delete_user_response.json") Assertion<Response<Void>> assertion
+            @MockHttpDelete("/users/{id}") Request<Void> request
     ) {
         final Response<Void> response = request.uriVars(1).execute();
-        assertion.assertAsExpected(response);
+        assertAsJson(response).isEqualTo("/mockmvc/delete_user_response.json");
     }
 
     @Test
     void should_delete_user_by_id(
-            @MockHttpDelete("/users/1") Response<Void> response,
-            @Given("/mockmvc/delete_user_response.json") Assertion<Response<Void>> assertion
+            @MockHttpDelete("/users/1") Response<Void> response
     ) {
-        assertion.assertAsExpected(response);
+        assertAsJson(response).isEqualTo("/mockmvc/delete_user_response.json");
     }
 
     @Test
     void should_update_user(
-            @MockHttpPut(value = "/users", body = "/mockmvc/user.json") UserDto user,
-            @Given("/mockmvc/updated_user.json") Assertion<UserDto> assertion
+            @MockHttpPut(value = "/users", body = "/mockmvc/user.json") UserDto user
     ) {
-        assertion.assertAsExpected(user);
+        assertAsJson(user).isEqualTo("/mockmvc/updated_user.json");
     }
 
     @Test
     void should_patch_user(
-            @MockHttpPatch(value = "/users/1", body = "/mockmvc/user.json") UserDto user,
-            @Given("/mockmvc/updated_user.json") Assertion<UserDto> assertion
+            @MockHttpPatch(value = "/users/1", body = "/mockmvc/user.json") UserDto user
     ) {
-        assertion.assertAsExpected(user);
+        assertAsJson(user).isEqualTo("/mockmvc/updated_user.json");
     }
 
     public static class LocaleInterceptor implements RequestInterceptor {
